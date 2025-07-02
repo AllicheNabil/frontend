@@ -3,11 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { PatientRepository } from '../domain/patient.repository';
 import { PatientEntity } from '../domain/patient-entity';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({ providedIn: 'root' })
 export class PatientService extends PatientRepository {
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:3001/patient'; // URL de votre API backend
+  
+  private baseUrl =  environment.apiUrl;
+  //  'http://localhost:3001/patient'; // URL de votre API backend
 
   getPatients(): Observable<PatientEntity[]> {
     return this.http.get<any[]>(this.baseUrl).pipe(
