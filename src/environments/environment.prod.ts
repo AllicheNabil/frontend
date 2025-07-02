@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://192.168.159.53:3001/patient'
+  apiUrl: 'https://backend-production-5207.up.railway.app//patient'
 };
