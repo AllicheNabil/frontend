@@ -10,7 +10,7 @@ export class PatientService extends PatientRepository {
   private http = inject(HttpClient);
   
   private baseUrl =  environment.apiUrl;
-  //   de votre API backend
+  //  // de votre API backend
 
   getPatients(): Observable<PatientEntity[]> {
     return this.http.get<any[]>(this.baseUrl).pipe(
