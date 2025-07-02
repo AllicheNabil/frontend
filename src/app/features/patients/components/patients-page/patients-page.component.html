@@ -1,0 +1,42 @@
+<app-sidebar></app-sidebar>
+<main class="content">
+  <header class="page-header">
+    <div class="header-actions">
+      <mat-form-field appearance="outline" floatLabel="always" class="search-input">
+        <mat-label>Rechercher un patient</mat-label>
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput placeholder="Nom, prénom..." [formControl]="searchControl" [matAutocomplete]="auto" />
+        <mat-autocomplete #auto="matAutocomplete">
+          @for (patient of filteredPatients(); track patient.id) {
+          <mat-option [value]="patient.name">{{ patient.name }}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+      <button mat-raised-button color="primary" class="add-button" routerLink="/add-patient">Ajouter un
+        patient</button>
+    </div>
+  </header>
+  <h1>Patients</h1>
+
+  <div class="page-body">
+    @if (filteredPatients().length > 0) {
+    <ul>
+      @for (patient of filteredPatients(); track patient.id) {
+      <li class="patient-item" [routerLink]="['/patients/details']" [queryParams]="{ patientId: patient.id }">
+        <div class="patient-details">
+          <h3>{{ patient.name }}</h3>
+          <p>Sexe: {{ patient.sex }}</p>
+          <p>Date de naissance: {{ patient.dateOfBirth }}</p>
+          <p>Téléphone: {{ patient.phone }}</p>
+        </div>
+        <button mat-icon-button color="warn" (click)="onDeletePatient(patient.id); $event.stopPropagation();">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </li>
+      }
+    </ul>
+    } @else {
+    <p>Aucun patient trouvé.</p>
+    }
+  </div>
+</main>

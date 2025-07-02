@@ -1,0 +1,81 @@
+<form [formGroup]="visitForm" (ngSubmit)="onSubmit()">
+  <h3>Ajouter une nouvelle consultation</h3>
+  <p>Form Valid: {{ visitForm.valid }}</p>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Raison de la visite</mat-label>
+    <textarea matInput formControlName="reason" required></textarea>
+    @if (visitForm.get('reason')?.invalid && visitForm.get('reason')?.touched) {
+      <mat-error>La raison est requise.</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Examen physique</mat-label>
+    <textarea matInput formControlName="physicalExamination"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Poids</mat-label>
+    <input matInput type="text" formControlName="weight">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Percentile de poids</mat-label>
+    <input matInput type="text" formControlName="weightPercentile">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Taille</mat-label>
+    <input matInput type="text" formControlName="height">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Percentile de taille</mat-label>
+    <input matInput type="text" formControlName="heightPercentile">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Périmètre crânien</mat-label>
+    <input matInput type="text" formControlName="headCirumference">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Percentile de périmètre crânien</mat-label>
+    <input matInput type="text" formControlName="headCirumferencePercentile">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>IMC</mat-label>
+    <input matInput type="text" formControlName="bmi">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Diagnostic</mat-label>
+    <textarea matInput formControlName="diagnosis" required></textarea>
+    @if (visitForm.get('diagnosis')?.invalid && visitForm.get('diagnosis')?.touched) {
+      <mat-error>Le diagnostic est requis.</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Date de la visite</mat-label>
+    <input matInput type="date" formControlName="visitDate" required>
+    @if (visitForm.get('visitDate')?.invalid && visitForm.get('visitDate')?.touched) {
+      <mat-error>La date est requise.</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Heure de la visite</mat-label>
+    <input matInput type="time" formControlName="visitHour" required>
+    @if (visitForm.get('visitHour')?.invalid && visitForm.get('visitHour')?.touched) {
+      <mat-error>L'heure est requise.</mat-error>
+    }
+  </mat-form-field>
+
+  <div class="form-actions">
+    <button mat-raised-button color="primary" type="submit" [disabled]="!visitForm.valid">Enregistrer</button>
+    <button mat-button type="button" (click)="onCancel()">Annuler</button>
+  </div>
+</form>

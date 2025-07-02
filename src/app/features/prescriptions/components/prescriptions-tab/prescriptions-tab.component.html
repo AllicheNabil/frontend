@@ -1,0 +1,18 @@
+<div>
+  <ng-container *ngIf="!showAddPrescriptionForm; else addPrescriptionForm">
+    <h2>Prescriptions</h2>
+    <button mat-raised-button color="primary" (click)="toggleAddPrescriptionForm(true)">Ajouter une
+      prescription</button>
+
+    <ul>
+      <li *ngFor="let medication of medications">
+        {{ medication.medicationName  }} - {{ medication.medicationDate }}
+      </li>
+    </ul>
+  </ng-container>
+
+  <ng-template #addPrescriptionForm>
+    <app-add-prescription-form [patientId]="patientId" (prescriptionAdded)="onPrescriptionAdded()"
+      (cancel)="toggleAddPrescriptionForm(false)"></app-add-prescription-form>
+  </ng-template>
+</div>

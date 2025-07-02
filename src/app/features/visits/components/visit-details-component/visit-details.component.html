@@ -1,0 +1,23 @@
+<div class="visit-details-container">
+  <button mat-button (click)="onBackClick()"><mat-icon>arrow_back</mat-icon>Retour</button>
+  <h2>Détails de la Consultation</h2>
+
+  @if (visit) {
+  <div class="details-grid">
+    <p><strong>Raison:</strong> {{ visit.reason }}</p>
+    <p><strong>Examen Physique:</strong> {{ visit.physicalExamination }}</p>
+    <p><strong>Poids:</strong> {{ visit.weight }}</p>
+    <p><strong>Percentile Poids:</strong> {{ visit.weightPercentile }}</p>
+    <p><strong>Taille:</strong> {{ visit.height }}</p>
+    <p><strong>Percentile Taille:</strong> {{ visit.heightPercentile }}</p>
+    <p><strong>Périmètre Crânien:</strong> {{ visit.headCirumference }}</p>
+    <p><strong>Percentile Périmètre Crânien:</strong> {{ visit.headCirumferencePercentile }}</p>
+    <p><strong>IMC:</strong> {{ visit.bmi }}</p>
+    <p><strong>Diagnostic:</strong> {{ visit.diagnosis }}</p>
+    <p><strong>Date de Visite:</strong> {{ visit.visitDate }}</p>
+    <p><strong>Heure de Visite:</strong> {{ visit.visitHour }}</p>
+  </div>
+  } @else {
+  <p>Chargement des détails de la visite...</p>
+  }
+</div>

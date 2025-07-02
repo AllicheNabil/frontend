@@ -1,0 +1,42 @@
+<div class="page-container">
+  <app-sidebar></app-sidebar>
+  <main class="content">
+    <header class="page-header">
+      <h1>Ajouter un nouveau patient</h1>
+    </header>
+
+    <div class="page-body">
+      <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="name" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Sexe</mat-label>
+          <input matInput formControlName="sex" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Date de naissance</mat-label>
+          <input matInput formControlName="dateOfBirth" type="date" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Téléphone</mat-label>
+          <input matInput formControlName="phone" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Adresse</mat-label>
+          <input matInput formControlName="adresse" required />
+        </mat-form-field>
+
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="!patientForm.valid">
+          Ajouter Patient
+        </button>
+      </form>
+    </div>
+  </main>
+</div>

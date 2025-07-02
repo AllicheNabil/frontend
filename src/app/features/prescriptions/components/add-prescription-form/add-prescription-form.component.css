@@ -1,0 +1,46 @@
+.medication-group {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.medication-group h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  flex-wrap: wrap; /* Allow fields to wrap to the next line if space is limited */
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.mat-form-field {
+    width: 100%; /* Default for all mat-form-fields */
+    margin-bottom: 10px;
+}
+
+.medication-name-field {
+  flex-grow: 2; /* Allows it to take more space */
+  min-width: 250px; /* Minimum width for the field */
+}
+
+.medication-name-field input {
+  text-transform: uppercase;
+}
+
+.remove-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
