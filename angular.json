@@ -92,13 +92,7 @@
             ]
           }
         },
-        "server": {
-  "builder": "@angular/build:ssr",
-  "options": {
-    "outputPath": "dist/hello-angular-server",
-    "main": "src/main.server.ts",
-    "tsConfig": "tsconfig.server.json"
-  }
+       
 }
 
       }
