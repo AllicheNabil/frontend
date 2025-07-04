@@ -1,3 +1,4 @@
+import { Patient } from '@app/features/patients/domain/patient-entity';
 import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
@@ -37,8 +38,10 @@ export class AddPrescriptionFormComponent implements OnInit {
   private fb = inject(FormBuilder);
   private http = inject(HttpClient);
 
+  patient: Patient | undefined;
   prescriptionForm: FormGroup;
   dosageForms: string[] = ['Comprimé', 'Crème', 'Gélule', 'Gouttes', 'Injection', 'Poudre', 'Sirop', 'Suppositoire'];
+  durationUnits: string[] = ['jours', 'mois', 'boîtes'];
   allDrugs: string[] = [];
   filteredDrugs: Observable<string[]>[] = [];
 
@@ -50,6 +53,7 @@ export class AddPrescriptionFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   
     this.http.get<string[]>('assets/drugs.json').subscribe(data => {
       this.allDrugs = data;
       this.addMedication(); // Add the first medication form group after drugs are loaded
@@ -60,6 +64,7 @@ export class AddPrescriptionFormComponent implements OnInit {
     return this.fb.group({
       medicationName: ['', Validators.required],
       medicationDuration: [''],
+      medicationDurationUnit: ['jours'],
       dosageForm: [''],
       timesPerDay: [''],
       amount: ['']
@@ -102,7 +107,7 @@ export class AddPrescriptionFormComponent implements OnInit {
           patientId: this.patientId,
           medicationName: medication.medicationName,
           medicationDate: formValues.medicationDate,
-          medicationDuration: medication.medicationDuration || '',
+          medicationDuration: `${medication.medicationDuration} ${medication.medicationDurationUnit}` || '',
           dosageForm: medication.dosageForm || '',
           timesPerDay: medication.timesPerDay || '',
           amount: medication.amount || '',
@@ -124,5 +129,21 @@ export class AddPrescriptionFormComponent implements OnInit {
 
   onCancel() {
     this.cancel.emit();
+  }
+
+  printPrescription(): void {
+    if (this.prescriptionForm.valid) {
+      const formValues = this.prescriptionForm.value;
+      const prescriptionData = {
+        patient: this.patient,
+        prescriptionDate: formValues.medicationDate,
+        medications: formValues.medications.map((med: any) => ({
+          ...med,
+          medicationDuration: `${med.medicationDuration} ${med.medicationDurationUnit}`
+        }))
+      };
+      sessionStorage.setItem('prescriptionData', JSON.stringify(prescriptionData));
+      window.open('/print-prescription', '_blank');
+    }
   }
 }

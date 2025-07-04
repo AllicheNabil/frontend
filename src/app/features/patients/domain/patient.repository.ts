@@ -1,10 +1,10 @@
 import { Observable } from 'rxjs';
-import { PatientEntity } from './patient-entity';
+import { Patient } from './patient-entity';
 
 export abstract class PatientRepository {
-  abstract getPatients(): Observable<PatientEntity[]>;
-  abstract getPatientById(patientId: string): Observable<PatientEntity>;
-  abstract addPatient(patient: PatientEntity): Observable<PatientEntity>;
-  abstract updatePatient(patient: PatientEntity): Observable<PatientEntity>;
+  abstract getPatients(): Observable<Patient[]>;
+  abstract getPatientById(patientId: string): Observable<Patient>;
+  abstract addPatient(patient: Patient): Observable<Patient>;
+  abstract updatePatient(patient: Patient): Observable<Patient>;
   abstract deletePatient(patientId: string): Observable<void>;
 }

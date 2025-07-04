@@ -18,6 +18,8 @@ export class VisitsTabComponent implements OnInit {
   @Input() patientId!: number;
   private controller = inject(VisitsTabController);
 
+  counter: number = 0 ;
+
   // Expose controller properties to the template
   visits = this.controller.visits;
   showAddVisitForm = this.controller.showAddVisitForm;

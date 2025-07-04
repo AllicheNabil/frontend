@@ -9,8 +9,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './auth/login_page/login-page.component';
 import { PatientsPageComponent } from './features/patients/components/patients-page/patients-page.component';
-
-
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { PatientEffects } from './features/patients/data/state/patient.effects';
+import { patientFeature } from './features/patients/data/state/patient.reducer';
 @NgModule({
   declarations: [
   
@@ -21,7 +23,9 @@ import { PatientsPageComponent } from './features/patients/components/patients-p
    PatientsPageComponent,
     BrowserModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forRoot({ patient: patientFeature.reducer }),
+    EffectsModule.forRoot([PatientEffects])
   ],
   providers: [],
   bootstrap: []

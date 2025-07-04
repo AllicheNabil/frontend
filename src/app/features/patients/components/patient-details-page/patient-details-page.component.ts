@@ -4,7 +4,7 @@ import { SidebarComponent } from '../../../../shared/sidebar/sidebar.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { GetPatientByIdUsecase } from '@app/features/patients/domain/patientUsecases/get-patient-by-id.usecase';
-import { PatientEntity } from '@app/features/patients/domain/patient-entity';
+import { Patient } from '@app/features/patients/domain/patient-entity';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -30,7 +30,7 @@ import { PrescriptionsTabComponent } from '@app/features/prescriptions/component
     RouterModule,
     LabTestComponent,
     PrescriptionsTabComponent,
-  ],
+],
   providers: [
     
   ],
@@ -42,8 +42,10 @@ export class PatientDetailsPageComponent implements OnInit {
   private getPatientByIdUsecase = inject(GetPatientByIdUsecase);
   private updatePatientUsecase = inject(UpdatePatientUsecase);
 
-  patient: PatientEntity | undefined;
+  patient: Patient | undefined;
   editMode: boolean = false;
+
+  counter : number = 0;
 
   medicalHistoryForm = new FormGroup({
     personalMedicalHistory: new FormControl(''),
@@ -98,14 +100,14 @@ export class PatientDetailsPageComponent implements OnInit {
 
   saveMedicalHistory() {
     if (this.patient && this.medicalHistoryForm.valid) {
-      const updatedPatient: PatientEntity = new PatientEntity({
+      const updatedPatient: Patient = new Patient({
         ...this.patient,
         ...this.medicalHistoryForm.value,
       });
 
       this.updatePatientUsecase.execute(updatedPatient).subscribe({
         next: (patient) => {
-          this.patient = patient; // Update patient data with saved changes
+          this.patient = updatedPatient; // Update patient data with saved changes
           this.toggleEditMode(); // Exit edit mode
           console.log('Medical history updated successfully!');
         },

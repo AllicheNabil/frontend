@@ -1,34 +1,28 @@
 @if (!showAddVisitForm() && !selectedVisit()) {
-  <div class="tab-header">
-    <h2>Visites</h2>
-    <button mat-raised-button color="primary" (click)="addVisit()">
-      Ajouter une nouvelle consultation
-    </button>
-  </div>
+<div class="tab-header">
+  <h2>Visites</h2>
+  <button mat-raised-button color="primary" (click)="addVisit()">
+    Ajouter une nouvelle consultation
+  </button>
+</div>
 
-  @if (visits().length > 0) {
-    <ul>
-      @for (visit of visits(); track visit.visitId) {
-        <li (click)="viewVisitDetails(visit)" class="visit-item">
-          <h3>Visit Date: {{ visit.visitDate }}</h3>
-          <p>Reason: {{ visit.reason }}</p>
-          <p>Diagnosis: {{ visit.diagnosis }}</p>
-          <!-- Add more visit details here -->
-        </li>
-      }
-    </ul>
-  } @else {
-    <p>No visits found for this patient.</p>
+@if (visits().length > 0) {
+<ul>
+  @for (visit of visits(); track visit.visitId) {
+  <li (click)="viewVisitDetails(visit)" class="visit-item">
+    <h3>Visit Date: {{ visit.visitDate }}</h3>
+    <p>Reason: {{ visit.reason }}</p>
+    <p>Diagnosis: {{ visit.diagnosis }}</p>
+    <!-- Add more visit details here -->
+  </li>
   }
+</ul>
+} @else {
+<p>No visits found for this patient.</p>
+}
 } @else if (showAddVisitForm()) {
-  <app-add-visit-form
-    [patientId]="patientId"
-    (visitAdded)="onVisitAdded()"
-    (cancel)="onCancelAddVisit()"
-  ></app-add-visit-form>
+<app-add-visit-form [patientId]="patientId" (visitAdded)="onVisitAdded()"
+  (cancel)="onCancelAddVisit()"></app-add-visit-form>
 } @else if (selectedVisit()) {
-  <app-visit-details
-    [visit]="selectedVisit()!"
-    (backToList)="backToVisitList()"
-  ></app-visit-details>
+<app-visit-details [visit]="selectedVisit()!" (backToList)="backToVisitList()"></app-visit-details>
 }

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../../../../shared/sidebar/sidebar.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -8,8 +8,9 @@ import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { DeletePatientUsecase } from '@app/features/patients/domain/patientUsecases/delete-patient.usecase';
-import { PatientsPageController } from './patients-page-controller';
+import { PatientFacade } from '@app/features/patients/facade/patient.facade';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { combineLatest, startWith, map } from 'rxjs';
 
 @Component({
   selector: 'app-patients-page',
@@ -27,34 +28,37 @@ import { PatientsPageController } from './patients-page-controller';
   ],
   templateUrl: './patients-page.component.html',
   styleUrls: ['./patients-page.component.css'],
-  providers: [PatientsPageController],
 })
-export class PatientsPageComponent {
-  private controller = inject(PatientsPageController);
-  private deletePatientUsecase = inject(DeletePatientUsecase);
+export class PatientsPageComponent implements OnInit {
+  private patientFacade = inject(PatientFacade);
 
   searchControl = new FormControl('');
 
-  searchQuery = this.controller.searchQuery;
-  filteredPatients = this.controller.filteredPatients;
+  patients = toSignal(this.patientFacade.patients$, { initialValue: [] });
+  loading = toSignal(this.patientFacade.loading$, { initialValue: false });
+  error = toSignal(this.patientFacade.error$, { initialValue: null });
 
-  constructor() {
-    this.searchControl.valueChanges.subscribe(value => {
-      this.controller.setSearchQuery(value || '');
-    });
+  filteredPatients = toSignal(
+    combineLatest([
+      this.patientFacade.patients$,
+      this.searchControl.valueChanges.pipe(startWith('')),
+    ]).pipe(
+      map(([patients, searchTerm]) =>
+        patients.filter(patient =>
+          patient.name.toLowerCase().includes((searchTerm || '').toLowerCase())
+        )
+      )
+    ),
+    { initialValue: [] }
+  );
+
+  ngOnInit(): void {
+    this.patientFacade.loadPatients();
   }
 
-  onDeletePatient(patientId: number) {
+  onDeletePatient(patientId: string) {
     if (confirm('Are you sure you want to delete this patient?')) {
-      this.deletePatientUsecase.execute(patientId.toString()).subscribe({
-        next: () => {
-          console.log('Patient deleted successfully');
-          this.controller.loadPatients(); // Re-fetch patients to update the list
-        },
-        error: (error) => {
-          console.error('Error deleting patient:', error);
-        },
-      });
+      this.patientFacade.deletePatient(patientId);
     }
   }
 }

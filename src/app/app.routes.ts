@@ -1,3 +1,4 @@
+import { PrescriptionViewComponent } from './features/prescriptions/components/prescription-view/prescription-view';
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginPageComponent } from './auth/login_page/login-page.component';
@@ -22,6 +23,7 @@ export const routes: Routes = [
       }
      ] ,
      
-   }
+   },
+   { path: 'print-prescription/:id', component: PrescriptionViewComponent },
 ];
 

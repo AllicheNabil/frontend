@@ -1,4 +1,8 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { patientFeature } from './features/patients/data/state/patient.reducer';
+import { PatientEffects } from './features/patients/data/state/patient.effects';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
@@ -41,6 +45,10 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideHttpClient(withFetch()),
+    provideStore({
+        [patientFeature.name]: patientFeature.reducer
+    }),
+    provideEffects(PatientEffects),
     { provide: PatientRepository, useClass: PatientService },
     { provide: GetPatientsUsecase, useClass: GetPatientsUsecaseImpl },
     { provide: AddPatientUsecase, useClass: AddPatientUsecaseImpl },

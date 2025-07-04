@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PatientEntity } from '@app/features/patients/domain/patient-entity';
+import { Patient } from '@app/features/patients/domain/patient-entity';
 import { AddPatientUsecase } from '@app/features/patients/domain/patientUsecases/add-patient.usecase';
 
 @Component({
@@ -41,7 +41,7 @@ export class AddPatientPageComponent {
     if (this.patientForm.valid) {
       const formValues = this.patientForm.value;
 
-      const newPatient = new PatientEntity({
+      const newPatient = new Patient({
         id: 0, // backend generates the real ID
         creationDate: new Date().toISOString().split('T')[0], // today’s date in "YYYY-MM-DD"
         name: formValues.name!,

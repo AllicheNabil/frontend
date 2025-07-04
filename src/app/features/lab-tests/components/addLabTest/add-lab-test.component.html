@@ -1,19 +1,16 @@
 <div>
   <h2>Add Lab Test</h2>
   <form [formGroup]="labTestForm" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="outline">
-    <mat-label>Nom du bilan</mat-label>
-    <input matInput formControlName="labTestName">
-  </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Nom du bilan</mat-label>
+      <input matInput formControlName="labTestName">
+    </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Date du bilan</mat-label>
-    <input matInput type="date" formControlName="labTestDate">
-  </mat-form-field>
 
-  <div class="actions">
-    <button mat-raised-button color="primary" type="submit" [disabled]="!labTestForm.valid">Enregistrer</button>
-    <button mat-button (click)="onCancel()">Annuler</button>
-  </div>
-</form>
+
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!labTestForm.valid">Enregistrer</button>
+      <button mat-button (click)="onCancel()">Annuler</button>
+    </div>
+  </form>
 </div>

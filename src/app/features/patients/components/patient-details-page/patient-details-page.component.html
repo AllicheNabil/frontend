@@ -104,12 +104,13 @@
       <mat-tab label="Prescriptions">
         <div class="tab-content">
           @if (patient) {
-            <app-prescriptions-tab [patientId]="patient.id"></app-prescriptions-tab>
+          <app-prescriptions-tab [patientId]="patient.id"></app-prescriptions-tab>
           } @else {
-            <p>Chargement des prescriptions...</p>
+          <p>Chargement des prescriptions...</p>
           }
         </div>
       </mat-tab>
+
     </mat-tab-group>
   </div>
 </main>

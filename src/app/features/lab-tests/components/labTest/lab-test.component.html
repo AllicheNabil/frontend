@@ -1,9 +1,11 @@
 <div>
   @if (!showAddLabTestForm()) {
   <h2>Lab Tests</h2>
-  <button mat-raised-button color="primary" (click)="toggleAddLabTestForm(true)">
-    Ajouter un bilan
-  </button>
+  <div class="button-container">
+    <button mat-raised-button color="primary" (click)="toggleAddLabTestForm(true)">
+      Ajouter un bilan
+    </button>
+  </div>
 
   <ul>
     @for (test of labTests(); track test.labTestId) {

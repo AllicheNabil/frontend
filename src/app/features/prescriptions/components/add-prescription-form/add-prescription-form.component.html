@@ -53,6 +53,14 @@
           <mat-label>Durée du traitement</mat-label>
           <input matInput formControlName="medicationDuration">
         </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Unité</mat-label>
+          <mat-select formControlName="medicationDurationUnit">
+            <mat-option *ngFor="let unit of durationUnits" [value]="unit">
+              {{unit}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
         <button mat-icon-button (click)="removeMedication(i)" *ngIf="medications.length > 1">
           <mat-icon>remove_circle</mat-icon>
         </button>
@@ -63,6 +71,7 @@
   <div class="actions">
     <button mat-raised-button color="primary" type="button" (click)="addMedication()">Ajouter un médicament</button>
     <button mat-raised-button color="primary" type="submit" [disabled]="!prescriptionForm.valid">Enregistrer</button>
+    <button mat-raised-button color="accent" type="button" (click)="printPrescription()">Imprimer</button>
     <button mat-button (click)="onCancel()">Annuler</button>
   </div>
 </form>

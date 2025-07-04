@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { PatientRepository } from '../domain/patient.repository';
-import { PatientEntity } from '../domain/patient-entity';
+import { Patient } from '../domain/patient-entity';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({ providedIn: 'root' })
@@ -12,29 +12,29 @@ export class PatientService extends PatientRepository {
   private baseUrl =  environment.apiUrl;
   //  // de votre API backend
 
-  getPatients(): Observable<PatientEntity[]> {
+  getPatients(): Observable<Patient[]> {
     return this.http.get<any[]>(this.baseUrl).pipe(
-      map((data) => data.map((item) => PatientEntity.fromMap(item)))
+      map((data) => data.map((item) => Patient.fromMap(item)))
     );
   }
 
-  getPatientById(patientId: string): Observable<PatientEntity> {
+  getPatientById(patientId: string): Observable<Patient> {
     return this.http.get<any>(`${this.baseUrl}/id/${patientId}`).pipe(
-      map((data) => PatientEntity.fromMap(data))
+      map((data) => Patient.fromMap(data))
     );
   }
 
-  addPatient(patient: PatientEntity): Observable<PatientEntity> {
+  addPatient(patient: Patient): Observable<Patient> {
     console.log('Adding patient:', patient.toMap());
     return this.http.post<any>(this.baseUrl, patient.toMap()).pipe(
-      map((data) => PatientEntity.fromMap(data))
+      map((data) => Patient.fromMap(data))
     );
     
   }
 
-  updatePatient(patient: PatientEntity): Observable<PatientEntity> {
+  updatePatient(patient: Patient): Observable<Patient> {
     return this.http.put<any>(`${this.baseUrl}/${patient.id}`, patient.toMap()).pipe(
-      map((data) => PatientEntity.fromMap(data))
+      map((data) => Patient.fromMap(data))
     );
   }
 

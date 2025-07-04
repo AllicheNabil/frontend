@@ -15,7 +15,7 @@ export interface PatientEntityProps {
   vaccines?: string | null;
 }
 
-export class PatientEntity {
+export class Patient {
   id: number;
   creationDate: string;
   name: string;
@@ -67,8 +67,8 @@ export class PatientEntity {
     };
   }
 
-  static fromMap(map: Record<string, any>): PatientEntity {
-    return new PatientEntity({
+  static fromMap(map: Record<string, any>): Patient {
+    return new Patient({
       id: map['id'],
       creationDate: map['creation_date'],
       name: map['name'],
@@ -86,7 +86,7 @@ export class PatientEntity {
     });
   }
 
-  equals(other: PatientEntity): boolean {
+  equals(other: Patient): boolean {
     return (
       this.id === other.id &&
       this.creationDate === other.creationDate &&

@@ -1,0 +1,40 @@
+<div class="prescription-container">
+  <header>
+    <div class="doctor-info">
+      <h2>Dr. [Nom du Docteur]</h2>
+      <p>[Spécialité]</p>
+      <p>[Adresse du Cabinet]</p>
+      <p>[Téléphone]</p>
+    </div>
+    <div class="prescription-date">
+      <p>Date: {{ prescriptionDate | date: 'dd/MM/yyyy' }}</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="patient-info">
+      <h3>Ordonnance pour :</h3>
+      <p><strong>Nom:</strong> {{ patient?.name }}</p>
+      <p><strong>Âge:</strong> {{ age }}</p>
+    </div>
+
+    <div class="medications-list">
+      <h4>Médicaments prescrits :</h4>
+      <ul>
+        <li *ngFor="let med of medications">
+          <strong>{{ med.medicationName }}</strong> - {{ med.dosageForm }}
+          <br>
+          <span>Posologie: {{ med.timesPerDay }} fois par jour, pendant {{ med.medicationDuration }}.</span>
+          <br>
+          <span>Quantité: {{ med.amount }}</span>
+        </li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <div class="signature">
+      <p>Signature du médecin</p>
+    </div>
+  </footer>
+</div>

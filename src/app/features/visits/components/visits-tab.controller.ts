@@ -11,6 +11,7 @@ export class VisitsTabController {
   visits = signal<PatientVisitEntity[]>([]);
   showAddVisitForm = signal<boolean>(false);
   selectedVisit = signal<PatientVisitEntity | null>(null);
+  counter : number = 0 ;
 
   loadVisits(patientId: number): void {
     if (patientId) {
