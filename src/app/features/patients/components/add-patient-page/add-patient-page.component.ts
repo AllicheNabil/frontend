@@ -1,14 +1,15 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../../../../shared/sidebar/sidebar.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Patient } from '@app/features/patients/domain/patient-entity';
-import { AddPatientUsecase } from '@app/features/patients/domain/patientUsecases/add-patient.usecase';
+import { PatientFacade } from '@app/features/patients/facade/patient.facade';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-add-patient-page',
@@ -21,12 +22,13 @@ import { AddPatientUsecase } from '@app/features/patients/domain/patientUsecases
     MatButtonModule,
     MatIconModule,
     ReactiveFormsModule,
+    MatSelectModule,
   ],
   templateUrl: './add-patient-page.component.html',
   styleUrls: ['./add-patient-page.component.css'],
 })
-export class AddPatientPageComponent {
-  private addPatientUsecase = inject(AddPatientUsecase);
+export class AddPatientPageComponent implements OnInit {
+  private patientFacade = inject(PatientFacade);
   private router = inject(Router);
 
   patientForm = new FormGroup({
@@ -36,6 +38,14 @@ export class AddPatientPageComponent {
     phone: new FormControl('', Validators.required),
     adresse: new FormControl('', Validators.required)
   });
+
+  ngOnInit(): void {
+    this.patientForm.get('name')?.valueChanges.subscribe(value => {
+      if (value) {
+        this.patientForm.get('name')?.setValue(value.toUpperCase(), { emitEvent: false });
+      }
+    });
+  }
 
   onSubmit() {
     if (this.patientForm.valid) {
@@ -58,16 +68,8 @@ export class AddPatientPageComponent {
         vaccines: '',
       });
 
-      this.addPatientUsecase.execute(newPatient).subscribe({
-        next: (patient) => {
-          console.log('Patient added successfully:', patient);
-          this.router.navigate(['/patients']);
-        },
-        error: (error) => {
-          console.error('Error adding patient:', error);
-          // Affiche une erreur à l'utilisateur si nécessaire
-        },
-      });
+      this.patientFacade.addPatient(newPatient);
+      this.router.navigate(['/patients']);
     }
   }
 }

@@ -8,3 +8,5 @@ export const {
 } = patientFeature;
 
 export const selectAllPatients = selectAll;
+
+console.log('patientFeature.selectPatientState:', patientFeature.selectPatientState);

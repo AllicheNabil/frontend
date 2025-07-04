@@ -13,7 +13,7 @@ import { AddPrescriptionFormComponent } from '../add-prescription-form/add-presc
   styleUrls: ['./prescriptions-tab.component.css'],
 })
 export class PrescriptionsTabComponent implements OnInit {
-  @Input() patientId!: number;
+  @Input() patientId: number | undefined;
   private getMedicationsUseCase = inject(GetMedicationsUseCase);
 
   medications: MedicationEntity[] = [];
@@ -25,14 +25,16 @@ export class PrescriptionsTabComponent implements OnInit {
   }
 
   loadMedications(): void {
-    this.getMedicationsUseCase.execute(this.patientId).subscribe({
-      next: (data) => {
-        this.medications = data;
-      },
-      error: (error) => {
-        console.error('Error fetching medications:', error);
-      },
-    });
+    if (this.patientId) {
+      this.getMedicationsUseCase.execute(this.patientId).subscribe({
+        next: (data) => {
+          this.medications = data;
+        },
+        error: (error) => {
+          console.error('Error fetching medications:', error);
+        },
+      });
+    }
   }
 
   toggleAddPrescriptionForm(show: boolean): void {

@@ -15,10 +15,9 @@ import { PatientVisitEntity } from '../../domain/patient-visit-entity';
   providers: [VisitsTabController] // Provide the controller at the component level
 })
 export class VisitsTabComponent implements OnInit {
-  @Input() patientId!: number;
+  @Input() patientId: number | undefined;
   private controller = inject(VisitsTabController);
 
-  counter: number = 0 ;
 
   // Expose controller properties to the template
   visits = this.controller.visits;
@@ -27,7 +26,9 @@ export class VisitsTabComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('VisitsTabComponent ngOnInit - showAddVisitForm initially:', this.showAddVisitForm());
-    this.controller.loadVisits(this.patientId);
+    if (this.patientId) {
+      this.controller.loadVisits(this.patientId);
+    }
   }
 
   addVisit(): void {

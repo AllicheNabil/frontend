@@ -19,7 +19,11 @@
   <h1>Patients</h1>
 
   <div class="page-body">
-    @if (filteredPatients().length > 0) {
+    @if (loading()) {
+    <div class="spinner-container">
+      <mat-spinner></mat-spinner>
+    </div>
+    } @else if (filteredPatients().length > 0) {
     <ul>
       @for (patient of filteredPatients(); track patient.id) {
       <li class="patient-item" [routerLink]="['/patients/details']" [queryParams]="{ patientId: patient.id }">
@@ -29,7 +33,8 @@
           <p>Date de naissance: {{ patient.dateOfBirth }}</p>
           <p>Téléphone: {{ patient.phone }}</p>
         </div>
-        <button mat-icon-button color="warn" (click)="onDeletePatient(patient.id); $event.stopPropagation();">
+        <button mat-icon-button class='delete-icon-button' color="warn"
+          (click)="onDeletePatient(patient.id); $event.stopPropagation();">
           <mat-icon>delete</mat-icon>
         </button>
       </li>

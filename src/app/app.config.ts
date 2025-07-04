@@ -3,6 +3,8 @@ import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { patientFeature } from './features/patients/data/state/patient.reducer';
 import { PatientEffects } from './features/patients/data/state/patient.effects';
+import { LabTestEffects } from './features/lab-tests/data/state/lab-test.effects';
+import { labTestFeature } from './features/lab-tests/data/state/lab-test.reducer';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
@@ -46,9 +48,10 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideHttpClient(withFetch()),
     provideStore({
-        [patientFeature.name]: patientFeature.reducer
+        [patientFeature.name]: patientFeature.reducer,
+        [labTestFeature.name]: labTestFeature.reducer
     }),
-    provideEffects(PatientEffects),
+    provideEffects(PatientEffects, LabTestEffects),
     { provide: PatientRepository, useClass: PatientService },
     { provide: GetPatientsUsecase, useClass: GetPatientsUsecaseImpl },
     { provide: AddPatientUsecase, useClass: AddPatientUsecaseImpl },

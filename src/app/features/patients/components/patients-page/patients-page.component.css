@@ -61,12 +61,15 @@
   border-radius: 8px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer; /* Add cursor pointer to indicate clickability */
-  transition: background-color 0.2s ease; /* Add a subtle hover effect */
+  cursor: pointer;
+  /* Add cursor pointer to indicate clickability */
+  transition: background-color 0.2s ease;
+  /* Add a subtle hover effect */
 }
 
 .patient-item:hover {
-  background-color: #f0f0f0; /* Light gray background on hover */
+  background-color: #f0f0f0;
+  /* Light gray background on hover */
 }
 
 .patient-details h3 {
@@ -79,12 +82,20 @@
   color: #666;
 }
 
-.mat-icon-button {
+.delete-icon-button {
   color: #dc3545;
-  /* Red color for delete icon */
 }
 
-.mat-icon-button:hover {
+
+.delete-icon-button:hover {
   background-color: rgba(220, 53, 69, 0.1);
   /* Light red background on hover */
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  /* Adjust as needed */
 }

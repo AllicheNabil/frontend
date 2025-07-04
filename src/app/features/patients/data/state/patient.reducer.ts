@@ -19,18 +19,54 @@ export const patientFeature = createFeature({
     name: 'patient',
     reducer: createReducer(
         initialState,
-        on(PatientActions.loadPatients, (state) => ({ ...state, loading: true })),
-        on(PatientActions.loadPatientsSuccess, (state, { patients }) => patientAdapter.setAll(patients, { ...state, loading: false })),
-        on(PatientActions.loadPatientsFailure, (state, { error }) => ({ ...state, loading: false, error })),
-        on(PatientActions.addPatient, (state) => ({ ...state, loading: true })),
-        on(PatientActions.addPatientSuccess, (state, { patient }) => patientAdapter.addOne(patient, { ...state, loading: false })),
-        on(PatientActions.addPatientFailure, (state, { error }) => ({ ...state, loading: false, error })),
-        on(PatientActions.updatePatient, (state) => ({ ...state, loading: true })),
-        on(PatientActions.updatePatientSuccess, (state, { patient }) => patientAdapter.updateOne({ id: patient.id, changes: patient }, { ...state, loading: false })),
-        on(PatientActions.updatePatientFailure, (state, { error }) => ({ ...state, loading: false, error })),
-        on(PatientActions.deletePatient, (state) => ({ ...state, loading: true })),
-        on(PatientActions.deletePatientSuccess, (state, { id }) => patientAdapter.removeOne(id, { ...state, loading: false })),
-        on(PatientActions.deletePatientFailure, (state, { error }) => ({ ...state, loading: false, error }))
+        on(PatientActions.loadPatients, (state) => {
+            console.log('Reducer: Load Patients action received');
+            return { ...state, loading: true };
+        }),
+        on(PatientActions.loadPatientsSuccess, (state, { patients }) => {
+            console.log('Reducer: Load Patients Success action received', patients);
+            return patientAdapter.setAll(patients, { ...state, loading: false });
+        }),
+        on(PatientActions.loadPatientsFailure, (state, { error }) => {
+            console.error('Reducer: Load Patients Failure action received', error);
+            return { ...state, loading: false, error };
+        }),
+        on(PatientActions.addPatient, (state) => {
+            console.log('Reducer: Add Patient action received');
+            return { ...state, loading: true };
+        }),
+        on(PatientActions.addPatientSuccess, (state, { patient }) => {
+            console.log('Reducer: Add Patient Success action received', patient);
+            return patientAdapter.addOne(patient, { ...state, loading: false });
+        }),
+        on(PatientActions.addPatientFailure, (state, { error }) => {
+            console.error('Reducer: Add Patient Failure action received', error);
+            return { ...state, loading: false, error };
+        }),
+        on(PatientActions.updatePatient, (state) => {
+            console.log('Reducer: Update Patient action received');
+            return { ...state, loading: true };
+        }),
+        on(PatientActions.updatePatientSuccess, (state, { patient }) => {
+            console.log('Reducer: Update Patient Success action received', patient);
+            return patientAdapter.updateOne({ id: patient.id, changes: patient }, { ...state, loading: false });
+        }),
+        on(PatientActions.updatePatientFailure, (state, { error }) => {
+            console.error('Reducer: Update Patient Failure action received', error);
+            return { ...state, loading: false, error };
+        }),
+        on(PatientActions.deletePatient, (state) => {
+            console.log('Reducer: Delete Patient action received');
+            return { ...state, loading: true };
+        }),
+        on(PatientActions.deletePatientSuccess, (state, { id }) => {
+            console.log('Reducer: Delete Patient Success action received', id);
+            return patientAdapter.removeOne(id, { ...state, loading: false });
+        }),
+        on(PatientActions.deletePatientFailure, (state, { error }) => {
+            console.error('Reducer: Delete Patient Failure action received', error);
+            return { ...state, loading: false, error };
+        })
     ),
     extraSelectors: ({ selectPatientState }) => ({
         ...patientAdapter.getSelectors(selectPatientState),

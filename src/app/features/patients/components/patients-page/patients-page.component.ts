@@ -7,6 +7,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterLink } from '@angular/router';
 import { PatientFacade } from '@app/features/patients/facade/patient.facade';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -25,6 +26,7 @@ import { combineLatest, startWith, map } from 'rxjs';
     RouterLink,
     MatAutocompleteModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './patients-page.component.html',
   styleUrls: ['./patients-page.component.css'],

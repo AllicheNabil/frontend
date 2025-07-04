@@ -1,21 +1,21 @@
 <app-sidebar></app-sidebar>
 <main class="content">
   <header class="page-header">
-    <h1>Détails du patient: {{ patient?.name }}</h1>
+    <h1>Détails du patient: {{ patient()?.name }}</h1>
   </header>
 
   <div class="page-body">
     <mat-tab-group>
       <mat-tab label="Patient ID">
         <div class="tab-content">
-          @if (patient) {
-          <p><strong>ID:</strong> {{ patient.id }}</p>
-          <p><strong>Nom:</strong> {{ patient.name }}</p>
-          <p><strong>Sexe:</strong> {{ patient.sex }}</p>
-          <p><strong>Date de naissance:</strong> {{ patient.dateOfBirth }}</p>
-          <p><strong>Téléphone:</strong> {{ patient.phone }}</p>
-          <p><strong>Adresse:</strong> {{ patient.adresse }}</p>
-          <p><strong>Date de création:</strong> {{ patient.creationDate }}</p>
+          @if (patient()) {
+          <p><strong>ID:</strong> {{ patient()?.id }}</p>
+          <p><strong>Nom:</strong> {{ patient()?.name }}</p>
+          <p><strong>Sexe:</strong> {{ patient()?.sex }}</p>
+          <p><strong>Date de naissance:</strong> {{ patient()?.dateOfBirth }}</p>
+          <p><strong>Téléphone:</strong> {{ patient()?.phone }}</p>
+          <p><strong>Adresse:</strong> {{ patient()?.adresse }}</p>
+          <p><strong>Date de création:</strong> {{ patient()?.creationDate }}</p>
           } @else {
           <p>Chargement des informations du patient...</p>
           }
@@ -31,13 +31,13 @@
           </div>
 
           @if (!editMode) {
-          <p><strong>Antécédents médicaux personnels:</strong> {{ patient?.personalMedicalHistory }}</p>
-          <p><strong>Antécédents médicaux familiaux:</strong> {{ patient?.familialMedicalHistory }}</p>
-          <p><strong>État de santé actuel:</strong> {{ patient?.currentMedicalCondition }}</p>
-          <p><strong>Médicaments actuels:</strong> {{ patient?.currentMedications }}</p>
-          <p><strong>Allergies:</strong> {{ patient?.allergies }}</p>
-          <p><strong>Chirurgies:</strong> {{ patient?.surgeries }}</p>
-          <p><strong>Vaccins:</strong> {{ patient?.vaccines }}</p>
+          <p><strong>Antécédents médicaux personnels:</strong> {{ patient()?.personalMedicalHistory }}</p>
+          <p><strong>Antécédents médicaux familiaux:</strong> {{ patient()?.familialMedicalHistory }}</p>
+          <p><strong>État de santé actuel:</strong> {{ patient()?.currentMedicalCondition }}</p>
+          <p><strong>Médicaments actuels:</strong> {{ patient()?.currentMedications }}</p>
+          <p><strong>Allergies:</strong> {{ patient()?.allergies }}</p>
+          <p><strong>Chirurgies:</strong> {{ patient()?.surgeries }}</p>
+          <p><strong>Vaccins:</strong> {{ patient()?.vaccines }}</p>
           } @else {
           <form [formGroup]="medicalHistoryForm" (ngSubmit)="saveMedicalHistory()">
             <mat-form-field appearance="outline">
@@ -84,8 +84,8 @@
       </mat-tab>
       <mat-tab label="Visites">
         <div class="tab-content">
-          @if (patient) {
-          <app-visits-tab [patientId]="patient.id"></app-visits-tab>
+          @if (patient()) {
+          <app-visits-tab [patientId]="patient()?.id"></app-visits-tab>
           } @else {
           <p>Chargement des visites...</p>
           }
@@ -93,8 +93,8 @@
       </mat-tab>
       <mat-tab label="Tests de Laboratoire">
         <div class="tab-content">
-          @if (patient) {
-          <app-lab-test [patientId]="patient.id"></app-lab-test>
+          @if (patient()) {
+          <app-lab-test [patientId]="patient()?.id"></app-lab-test>
           } @else {
           <p>Chargement des tests de laboratoire...</p>
           }
@@ -103,8 +103,8 @@
 
       <mat-tab label="Prescriptions">
         <div class="tab-content">
-          @if (patient) {
-          <app-prescriptions-tab [patientId]="patient.id"></app-prescriptions-tab>
+          @if (patient()) {
+          <app-prescriptions-tab [patientId]="patient()?.id"></app-prescriptions-tab>
           } @else {
           <p>Chargement des prescriptions...</p>
           }

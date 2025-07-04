@@ -14,7 +14,10 @@
 
         <mat-form-field appearance="outline">
           <mat-label>Sexe</mat-label>
-          <input matInput formControlName="sex" required />
+          <mat-select formControlName="sex" required>
+            <mat-option value="Masculin">Masculin</mat-option>
+            <mat-option value="Féminin">Féminin</mat-option>
+          </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="outline">

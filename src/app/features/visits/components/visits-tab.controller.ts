@@ -13,7 +13,7 @@ export class VisitsTabController {
   selectedVisit = signal<PatientVisitEntity | null>(null);
   counter : number = 0 ;
 
-  loadVisits(patientId: number): void {
+  loadVisits(patientId: number | undefined): void {
     if (patientId) {
       this.getVisitsUseCase.execute(patientId).subscribe({
         next: (data: PatientVisitEntity[]) => {
@@ -42,7 +42,7 @@ export class VisitsTabController {
     this.selectedVisit.set(null);
   }
 
-  onVisitAdded(patientId: number): void {
+  onVisitAdded(patientId: number | undefined): void {
     this.toggleAddVisitForm(false);
     this.loadVisits(patientId); // Refresh the list of visits
   }
