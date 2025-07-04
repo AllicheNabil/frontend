@@ -7,7 +7,7 @@ import { DeletePatientUsecase } from '../../domain/patientUsecases/delete-patien
 export class DeletePatientUsecaseImpl extends DeletePatientUsecase {
   private repository = inject(PatientRepository);
 
-  execute(patientId: string): Observable<void> {
+  execute(patientId: number): Observable<void> {
     return this.repository.deletePatient(patientId);
   }
 }

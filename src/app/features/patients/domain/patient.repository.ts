@@ -6,5 +6,5 @@ export abstract class PatientRepository {
   abstract getPatientById(patientId: string): Observable<Patient>;
   abstract addPatient(patient: Patient): Observable<Patient>;
   abstract updatePatient(patient: Patient): Observable<Patient>;
-  abstract deletePatient(patientId: string): Observable<void>;
+  abstract deletePatient(patientId: number): Observable<void>;
 }

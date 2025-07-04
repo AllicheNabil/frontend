@@ -3,5 +3,5 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export abstract class DeletePatientUsecase {
-  abstract execute(patientId: string): Observable<void>;
+  abstract execute(patientId: number): Observable<void>;
 }

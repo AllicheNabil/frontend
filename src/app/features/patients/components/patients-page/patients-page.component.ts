@@ -56,7 +56,7 @@ export class PatientsPageComponent implements OnInit {
     this.patientFacade.loadPatients();
   }
 
-  onDeletePatient(patientId: string) {
+  onDeletePatient(patientId: number) {
     if (confirm('Are you sure you want to delete this patient?')) {
       this.patientFacade.deletePatient(patientId);
     }

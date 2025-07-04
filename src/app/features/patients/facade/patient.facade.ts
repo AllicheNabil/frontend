@@ -26,7 +26,7 @@ export class PatientFacade {
     this.store.dispatch(PatientActions.updatePatient({ patient }));
   }
 
-  deletePatient(id: string): void {
+  deletePatient(id: number): void {
     this.store.dispatch(PatientActions.deletePatient({ id }));
   }
 }

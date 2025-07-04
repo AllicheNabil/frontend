@@ -38,7 +38,7 @@ export class PatientService extends PatientRepository {
     );
   }
 
-  deletePatient(patientId: string): Observable<void> {
+  deletePatient(patientId: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${patientId}`);
   }
 }
