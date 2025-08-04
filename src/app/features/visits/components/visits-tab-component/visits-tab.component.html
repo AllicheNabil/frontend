@@ -1,28 +1,57 @@
-@if (!showAddVisitForm() && !selectedVisit()) {
-<div class="tab-header">
-  <h2>Visites</h2>
-  <button mat-raised-button color="primary" (click)="addVisit()">
-    Ajouter une nouvelle consultation
+<div class="visit-container">
+  @if (showGrowthChart && patient) {
+  @if(visits$ | async; as visits) {
+  <button mat-stroked-button color="accent" type="button" (click)="toggleGrowthChart()">
+    <mat-icon>arrow_back</mat-icon> Retour à la liste des visites
   </button>
-</div>
-
-@if (visits().length > 0) {
-<ul>
-  @for (visit of visits(); track visit.visitId) {
-  <li (click)="viewVisitDetails(visit)" class="visit-item">
-    <h3>Visit Date: {{ visit.visitDate }}</h3>
-    <p>Reason: {{ visit.reason }}</p>
-    <p>Diagnosis: {{ visit.diagnosis }}</p>
-    <!-- Add more visit details here -->
-  </li>
+  <app-growth-chart [gender]="patient.gender!" [patient]="patient" [patientVisits]="visits"
+    [patientAgeInMonths]="currentAgeInMonths"></app-growth-chart>
   }
-</ul>
-} @else {
-<p>No visits found for this patient.</p>
-}
-} @else if (showAddVisitForm()) {
-<app-add-visit-form [patientId]="patientId" (visitAdded)="onVisitAdded()"
-  (cancel)="onCancelAddVisit()"></app-add-visit-form>
-} @else if (selectedVisit()) {
-<app-visit-details [visit]="selectedVisit()!" (backToList)="backToVisitList()"></app-visit-details>
-}
+
+  } @else {
+  @if (!showAddVisitForm && !selectedVisit) {
+  <div class="tab-header">
+    <h2>Historique des consultations</h2>
+    <button mat-raised-button (click)="toggleGrowthChart()">
+      <mat-icon>show_chart</mat-icon>
+      Afficher les courbes de croissance
+    </button>
+    <button mat-flat-button (click)="addVisit()">
+      <mat-icon>add</mat-icon>
+      Ajouter une consultation
+    </button>
+
+  </div>
+
+  @if (visits$ | async; as visits) {
+  @if (visits.length > 0) {
+  <div class="timeline">
+    @for (visit of visits; track visit.visitId) {
+    <mat-card class="visit-card">
+      <mat-card-content class="visit-details-content">
+        <div class="visit-details-column">
+          <p><strong>Motif de consultation: </strong> {{ visit.reason }}</p>
+          <p><strong>Diagnostique: </strong> {{ visit.diagnosis }}</p>
+        </div>
+        <div class="visit-details-column">
+          <p><strong>Date de consultation: </strong>{{ visit.visitDate }}</p>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="viewVisitDetails(visit)">Voir Détails</button>
+      </mat-card-actions>
+    </mat-card>
+    }
+  </div>
+  } @else {
+  <p>Aucune visite trouvée pour ce patient.</p>
+  }
+  }
+  } @else if (showAddVisitForm) {
+  <app-add-visit-form [patientId]="patientId" (onVisitAdded)="onVisitAdded()"
+    (cancel)="onCancelAddVisit()"></app-add-visit-form>
+  } @else if (selectedVisit) {
+  <app-visit-details [visit]="selectedVisit!" (backToList)="backToVisitList()"></app-visit-details>
+  }
+  }
+</div>

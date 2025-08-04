@@ -8,8 +8,13 @@ export interface LabTestState extends EntityState<LabTestEntity> {
   error: any;
 }
 
+// Define a function to select the primary key
+export function selectLabTestId(a: LabTestEntity): number {
+  return a.labTestId;
+}
+
 export const labTestAdapter = createEntityAdapter<LabTestEntity>({
-  selectId: (labTest: LabTestEntity) => labTest.labTestId,
+  selectId: selectLabTestId,
 });
 
 export const initialState: LabTestState = labTestAdapter.getInitialState({

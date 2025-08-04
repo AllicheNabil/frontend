@@ -1,81 +1,136 @@
-<form [formGroup]="visitForm" (ngSubmit)="onSubmit()">
-  <h3>Ajouter une nouvelle consultation</h3>
-  <p>Form Valid: {{ visitForm.valid }}</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Ajouter une nouvelle consultation</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="!showGrowthChart">
+      <form [formGroup]="visitForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Motif de consultation</mat-label>
+          <textarea matInput formControlName="reason" required></textarea>
+          @if (visitForm.get('reason')?.invalid && visitForm.get('reason')?.touched) {
+          <mat-error>La motif est requis.</mat-error>
+          }
+        </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Raison de la visite</mat-label>
-    <textarea matInput formControlName="reason" required></textarea>
-    @if (visitForm.get('reason')?.invalid && visitForm.get('reason')?.touched) {
-      <mat-error>La raison est requise.</mat-error>
-    }
-  </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Examen physique</mat-label>
+          <textarea matInput formControlName="physicalExamination"></textarea>
+        </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Examen physique</mat-label>
-    <textarea matInput formControlName="physicalExamination"></textarea>
-  </mat-form-field>
+        <div class="row-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Poids</mat-label>
+            <input matInput type="text" formControlName="weight">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Percentile de poids</mat-label>
+            <input matInput type="text" formControlName="weightPercentile" readonly>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>ZScore de poids</mat-label>
+            <input matInput type="text" formControlName="weightZScore" readonly>
+          </mat-form-field>
+        </div>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Poids</mat-label>
-    <input matInput type="text" formControlName="weight">
-  </mat-form-field>
+        <div class="row-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Taille</mat-label>
+            <input matInput type="text" formControlName="height">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Percentile de taille</mat-label>
+            <input matInput type="text" formControlName="heightPercentile" readonly>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>ZScore de taille</mat-label>
+            <input matInput type="text" formControlName="heightZScore" readonly>
+          </mat-form-field>
+        </div>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Percentile de poids</mat-label>
-    <input matInput type="text" formControlName="weightPercentile">
-  </mat-form-field>
+        <div class="row-container" *ngIf="showHeadCircumferenceFields">
+          <mat-form-field appearance="outline">
+            <mat-label>Périmètre crânien</mat-label>
+            <input matInput type="text" formControlName="headCircumference">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Percentile de périmètre crânien</mat-label>
+            <input matInput type="text" formControlName="headCircumferencePercentile">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>ZScore de périmètre crânien</mat-label>
+            <input matInput type="text" formControlName="headCircumferenceZScore">
+          </mat-form-field>
+        </div>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Taille</mat-label>
-    <input matInput type="text" formControlName="height">
-  </mat-form-field>
+        <div class="row-container" *ngIf="showBmiFields">
+          <mat-form-field appearance="outline">
+            <mat-label>IMC</mat-label>
+            <input matInput type="text" formControlName="bmi" readonly>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Percentile de l'IMC</mat-label>
+            <input matInput type="text" formControlName="bmiPercentile">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>ZScore de l'IMC</mat-label>
+            <input matInput type="text" formControlName="bmiZScore">
+          </mat-form-field>
+        </div>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Percentile de taille</mat-label>
-    <input matInput type="text" formControlName="heightPercentile">
-  </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Diagnostic</mat-label>
+          <textarea matInput formControlName="diagnosis" required></textarea>
+          @if (visitForm.get('diagnosis')?.invalid && visitForm.get('diagnosis')?.touched) {
+          <mat-error>Le diagnostic est requis.</mat-error>
+          }
+        </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Périmètre crânien</mat-label>
-    <input matInput type="text" formControlName="headCirumference">
-  </mat-form-field>
+        <div class="row-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Date de la visite</mat-label>
+            <input matInput type="date" formControlName="visitDate" required>
+            @if (visitForm.get('visitDate')?.invalid && visitForm.get('visitDate')?.touched) {
+            <mat-error>La date est requise.</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Heure de la visite</mat-label>
+            <input matInput type="time" formControlName="visitHour" required>
+            @if (visitForm.get('visitHour')?.invalid && visitForm.get('visitHour')?.touched) {
+            <mat-error>L'heure est requise.</mat-error>
+            }
+          </mat-form-field>
+        </div>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Percentile de périmètre crânien</mat-label>
-    <input matInput type="text" formControlName="headCirumferencePercentile">
-  </mat-form-field>
+        <div class="form-actions">
+          <button mat-flat-button color="primary" type="submit" [disabled]="!visitForm.valid">
+            <mat-icon>save</mat-icon> Enregistrer
+          </button>
+          <button mat-flat-button color="warn" type="button" (click)="onCancel()">
+            <mat-icon>cancel</mat-icon> Annuler
+          </button>
+          <button mat-stroked-button color="primary" type="button" (click)="onPrint()" [disabled]="!visitForm.valid">
+            <mat-icon>print</mat-icon> Imprimera
+          </button>
+          <button mat-stroked-button color="accent" type="button" (click)="toggleGrowthChart()">
+            <mat-icon>show_chart</mat-icon> Afficher les courbes de croissance
+          </button>
+        </div>
+      </form>
 
-  <mat-form-field appearance="outline">
-    <mat-label>IMC</mat-label>
-    <input matInput type="text" formControlName="bmi">
-  </mat-form-field>
+    </div>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Diagnostic</mat-label>
-    <textarea matInput formControlName="diagnosis" required></textarea>
-    @if (visitForm.get('diagnosis')?.invalid && visitForm.get('diagnosis')?.touched) {
-      <mat-error>Le diagnostic est requis.</mat-error>
-    }
-  </mat-form-field>
+    <div *ngIf="showGrowthChart">
+      <button mat-stroked-button color="accent" type="button" (click)="toggleGrowthChart()">
+        <mat-icon>arrow_back</mat-icon> Retour au formulaire
+      </button>
+      <app-growth-chart [gender]="patient!.gender!" [patientAgeInMonths]="currentAgeInMonths"
+        [patientWeight]="currentWeight" [patientHeight]="currentHeight"
+        [patientHeadCircumference]="currentHeadCircumference" [patientBmi]="currentBmi" [patientVisits]="currentVisits"
+        [patient]="patient">
+      </app-growth-chart>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Date de la visite</mat-label>
-    <input matInput type="date" formControlName="visitDate" required>
-    @if (visitForm.get('visitDate')?.invalid && visitForm.get('visitDate')?.touched) {
-      <mat-error>La date est requise.</mat-error>
-    }
-  </mat-form-field>
-
-  <mat-form-field appearance="outline">
-    <mat-label>Heure de la visite</mat-label>
-    <input matInput type="time" formControlName="visitHour" required>
-    @if (visitForm.get('visitHour')?.invalid && visitForm.get('visitHour')?.touched) {
-      <mat-error>L'heure est requise.</mat-error>
-    }
-  </mat-form-field>
-
-  <div class="form-actions">
-    <button mat-raised-button color="primary" type="submit" [disabled]="!visitForm.valid">Enregistrer</button>
-    <button mat-button type="button" (click)="onCancel()">Annuler</button>
-  </div>
-</form>
+    </div>
+  </mat-card-content>
+</mat-card>

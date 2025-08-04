@@ -1,10 +1,16 @@
-import { visitFeature } from './visit.reducer';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { visitAdapter, VisitState, visitFeature } from './visit.reducer';
 
-export const {
-  selectVisitState,
-  selectLoading,
-  selectError,
-  selectAll,
-} = visitFeature;
+export const { selectAll, selectEntities, selectIds, selectTotal } = visitAdapter.getSelectors(
+    visitFeature.selectVisitState
+);
 
-export const selectAllVisits = selectAll;
+export const selectLoading = createSelector(
+    visitFeature.selectVisitState,
+  (state: VisitState) => state.loading
+);
+
+export const selectError = createSelector(
+    visitFeature.selectVisitState,
+  (state: VisitState) => state.error
+);

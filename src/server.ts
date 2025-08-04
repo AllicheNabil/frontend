@@ -67,3 +67,4 @@ if (isMainModule(import.meta.url)) {
  */
 const reqHandler = createNodeRequestHandler(app);
 export default reqHandler;
+export { app };

@@ -1,4 +1,21 @@
-.button-container {
+.lab-test-container {
+    height: 70vh;
+    overflow: hidden;
+    border: 5px solid #af3fb5;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.table-container {
+    overflow-y: auto;
+    height: 70%;
+}
+
+
+
+.header-row {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
 }

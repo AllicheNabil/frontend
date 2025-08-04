@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  overflow: hidden;
+}
+
+main {
+  flex-grow: 1;
+  /* Allows the main content to grow and fill available space */
+  padding: 20px;
+  /* Add some padding */
+  overflow-y: auto;
+  /* Add scroll for long content */
+}

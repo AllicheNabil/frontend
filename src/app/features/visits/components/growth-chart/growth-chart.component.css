@@ -1,0 +1,18 @@
+.growth-chart-container {
+    display: block;
+    height: 400px;
+    padding-bottom: 30px;
+}
+
+.buttons-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+    gap: 16px;
+}
+
+.canvas-container {
+    height: 380px;
+    padding-bottom: 20px;
+}

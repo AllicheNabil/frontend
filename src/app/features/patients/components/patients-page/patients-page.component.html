@@ -1,4 +1,4 @@
-<app-sidebar></app-sidebar>
+
 <main class="content">
   <header class="page-header">
     <div class="header-actions">
@@ -16,7 +16,7 @@
         patient</button>
     </div>
   </header>
-  <h1>Patients</h1>
+  <h2>Patients</h2>
 
   <div class="page-body">
     @if (loading()) {
@@ -29,7 +29,7 @@
       <li class="patient-item" [routerLink]="['/patients/details']" [queryParams]="{ patientId: patient.id }">
         <div class="patient-details">
           <h3>{{ patient.name }}</h3>
-          <p>Sexe: {{ patient.sex }}</p>
+          <p>Gender: {{ patient.gender }}</p>
           <p>Date de naissance: {{ patient.dateOfBirth }}</p>
           <p>Téléphone: {{ patient.phone }}</p>
         </div>

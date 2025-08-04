@@ -16,5 +16,8 @@ export const PatientActions = createActionGroup({
     'Delete Patient': props<{ id: number }>(),
     'Delete Patient Success': props<{ id: number }>(),
     'Delete Patient Failure': props<{ error: any }>(),
+    'Load Patient': props<{ patientId: number }>(),
+    'Load Patient Success': props<{ patient: Patient }>(),
+    'Load Patient Failure': props<{ error: any }>(),
   },
 });

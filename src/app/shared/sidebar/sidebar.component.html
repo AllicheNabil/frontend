@@ -1,5 +1,7 @@
 <div class="sidebar">
-    <div class="sidebar-header">EasyMed</div>
+    <div class="sidebar-header">
+        <img src="assets/icons/app_logo.jpg" alt="App Logo" class="app-logo">
+    </div>
     <ul class="nav-list">
         <li>
             <a routerLink="/patients" routerLinkActive="active">
@@ -8,7 +10,13 @@
             </a>
         </li>
         <li>
-            <a routerLink="/login" routerLinkActive="active">
+            <a routerLink="/profile" routerLinkActive="active">
+                <mat-icon>person</mat-icon>
+                <span>Profile</span>
+            </a>
+        </li>
+        <li>
+            <a (click)="logout()">
                 <mat-icon>logout</mat-icon>
                 <span>Logout</span>
             </a>

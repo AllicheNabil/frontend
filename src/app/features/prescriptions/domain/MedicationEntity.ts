@@ -1,4 +1,4 @@
-export class MedicationEntity {
+export class Medication {
   medicationId: number;
   medicationName: string;
   medicationDate: string;
@@ -30,27 +30,26 @@ export class MedicationEntity {
 
   toMap(): Record<string, any> {
     return {
-      medication_id: this.medicationId,
-      medication_name: this.medicationName,
-      medication_date: this.medicationDate,
-      medication_duration: this.medicationDuration,
-      patient_id: this.patientId,
-      dosage_form: this.dosageForm,
-      times_per_day: this.timesPerDay,
+      medicationName: this.medicationName,
+      medicationDate: this.medicationDate,
+      medicationDuration: this.medicationDuration,
+      patientId: this.patientId,
+      dosageForm: this.dosageForm,
+      timesPerDay: this.timesPerDay,
       amount: this.amount,
     };
   }
 
-  static fromMap(map: Record<string, any>): MedicationEntity {
-    return new MedicationEntity({
-      medicationId: map['medication_id'],
-      medicationName: map['medication_name'],
-      medicationDate: map['medication_date'],
-      medicationDuration: map['medication_duration'],
-      patientId: map['patient_id'],
-      dosageForm: map['dosage_form'],
-      timesPerDay: map['times_per_day'],
-      amount: map['amount'],
+  static fromMap(map:  any): Medication {
+    return new Medication({
+      medicationId: map.medicationId,
+      medicationName: map.medicationName,
+      medicationDate: map.medicationDate,
+      medicationDuration: map.medicationDuration,
+      patientId: map.patientId,
+      dosageForm: map.dosageForm,
+      timesPerDay: map.timesPerDay,
+      amount: map.amount,
     });
   }
 }

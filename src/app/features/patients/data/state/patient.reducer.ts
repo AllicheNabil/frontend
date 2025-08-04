@@ -6,6 +6,7 @@ import { EntityState, createEntityAdapter } from '@ngrx/entity';
 export interface PatientState extends EntityState<Patient> {
   loading: boolean;
   error: any;
+  selectedPatient: Patient | null;
 }
 
 export const patientAdapter = createEntityAdapter<Patient>();
@@ -13,6 +14,7 @@ export const patientAdapter = createEntityAdapter<Patient>();
 export const initialState: PatientState = patientAdapter.getInitialState({
   loading: false,
   error: null,
+  selectedPatient: null,
 });
 
 export const patientFeature = createFeature({
@@ -66,9 +68,19 @@ export const patientFeature = createFeature({
         on(PatientActions.deletePatientFailure, (state, { error }) => {
             console.error('Reducer: Delete Patient Failure action received', error);
             return { ...state, loading: false, error };
+        }),
+        on(PatientActions.loadPatient, (state) => {
+            console.log('Reducer: Load Patient action received');
+            return { ...state, loading: true, selectedPatient: null };
+        }),
+        on(PatientActions.loadPatientSuccess, (state, { patient }) => {
+            console.log('Reducer: Load Patient Success action received', patient);
+            return { ...state, loading: false, selectedPatient: patient };
+        }),
+        on(PatientActions.loadPatientFailure, (state, { error }) => {
+            console.error('Reducer: Load Patient Failure action received', error);
+            return { ...state, loading: false, error, selectedPatient: null };
         })
     ),
-    extraSelectors: ({ selectPatientState }) => ({
-        ...patientAdapter.getSelectors(selectPatientState),
-    }),
-});
+    });
+

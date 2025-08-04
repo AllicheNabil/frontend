@@ -1,89 +1,149 @@
-<app-sidebar></app-sidebar>
 <main class="content">
-  <header class="page-header">
-    <h1>Détails du patient: {{ patient()?.name }}</h1>
+  <header>
+    <h3>Détails du patient: {{ patient()?.name }} <span class="patient-age">({{ formattedAge }})</span></h3>
   </header>
 
-  <div class="page-body">
-    <mat-tab-group>
-      <mat-tab label="Patient ID">
-        <div class="tab-content">
+  <div class="mat-group-container">
+    <mat-tab-group class="patient-details-tabs">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon svgIcon="patient_id_icon"></mat-icon>&nbsp;
+          Patient ID
+        </ng-template>
+        <div>
           @if (patient()) {
-          <p><strong>ID:</strong> {{ patient()?.id }}</p>
-          <p><strong>Nom:</strong> {{ patient()?.name }}</p>
-          <p><strong>Sexe:</strong> {{ patient()?.sex }}</p>
-          <p><strong>Date de naissance:</strong> {{ patient()?.dateOfBirth }}</p>
-          <p><strong>Téléphone:</strong> {{ patient()?.phone }}</p>
-          <p><strong>Adresse:</strong> {{ patient()?.adresse }}</p>
-          <p><strong>Date de création:</strong> {{ patient()?.creationDate }}</p>
+          <mat-card class="patient-card">
+            <mat-card-header>
+              <mat-card-title>Informations personnelles</mat-card-title>
+              <button mat-icon-button (click)="togglePersonalInfoEditMode()" class="edit-button">
+                <mat-icon>{{ isEditingPersonalInfo ? 'cancel' : 'edit' }}</mat-icon>
+
+              </button>
+            </mat-card-header>
+            <mat-card-content>
+              <form [formGroup]="personalInfoForm" (ngSubmit)="savePersonalInfo()">
+                <div *ngIf="!isEditingPersonalInfo">
+                  <p><mat-icon>person</mat-icon><strong>ID:</strong> &nbsp; {{ patient()?.id }}</p>
+                  <p><mat-icon>person</mat-icon><strong>Nom:</strong> &nbsp;{{ patient()?.name }}</p>
+                  <p><mat-icon>wc</mat-icon><strong>Gender:</strong> &nbsp;{{ patient()?.gender }}</p>
+                  <p><mat-icon>cake</mat-icon><strong>Date de naissance:</strong> &nbsp; {{ patient()?.dateOfBirth }}
+                  </p>
+                  <p><mat-icon>phone</mat-icon><strong>Téléphone:</strong> &nbsp;{{ patient()?.phone }}</p>
+                  <p><mat-icon>home</mat-icon><strong>Adresse:</strong> &nbsp;{{ patient()?.adresse }}</p>
+                  <p><mat-icon>event</mat-icon><strong>Date de création:</strong> &nbsp;{{ patient()?.creationDate }}
+                  </p>
+                </div>
+                <div *ngIf="isEditingPersonalInfo">
+                  <mat-form-field>
+                    <mat-label>Nom</mat-label>
+                    <input matInput formControlName="name">
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Adresse</mat-label>
+                    <input matInput formControlName="adresse">
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Téléphone</mat-label>
+                    <input matInput formControlName="phone">
+                  </mat-form-field>
+                  <button mat-raised-button color="primary" type="submit">Enregistrer</button>
+                </div>
+              </form>
+            </mat-card-content>
+          </mat-card>
           } @else {
           <p>Chargement des informations du patient...</p>
           }
         </div>
       </mat-tab>
-      <mat-tab label="Historique Médical">
-        <div class="tab-content">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon svgIcon="medical_history_icon"></mat-icon>&nbsp;
+          Historique Médical
+        </ng-template>
+        <div class="medical-history-container">
           <div class="tab-header">
             <h2>Historique Médical</h2>
-            <button mat-raised-button color="primary" (click)="toggleEditMode()">
+            <button mat-flat-button color="primary" (click)="toggleEditMode()">
+              <mat-icon>{{ editMode ? 'cancel' : 'edit' }}</mat-icon>
               {{ editMode ? 'Annuler' : 'Modifier' }}
             </button>
           </div>
 
           @if (!editMode) {
-          <p><strong>Antécédents médicaux personnels:</strong> {{ patient()?.personalMedicalHistory }}</p>
-          <p><strong>Antécédents médicaux familiaux:</strong> {{ patient()?.familialMedicalHistory }}</p>
-          <p><strong>État de santé actuel:</strong> {{ patient()?.currentMedicalCondition }}</p>
-          <p><strong>Médicaments actuels:</strong> {{ patient()?.currentMedications }}</p>
-          <p><strong>Allergies:</strong> {{ patient()?.allergies }}</p>
-          <p><strong>Chirurgies:</strong> {{ patient()?.surgeries }}</p>
-          <p><strong>Vaccins:</strong> {{ patient()?.vaccines }}</p>
-          } @else {
-          <form [formGroup]="medicalHistoryForm" (ngSubmit)="saveMedicalHistory()">
-            <mat-form-field appearance="outline">
-              <mat-label>Antécédents médicaux personnels</mat-label>
-              <textarea matInput formControlName="personalMedicalHistory"></textarea>
-            </mat-form-field>
+          <mat-card class="medical-history-card">
+            <mat-card-content>
+              <p><mat-icon>history</mat-icon><strong>Antécédents médicaux personnels:</strong> {{
+                patient()?.personalMedicalHistory }}</p>
+              <p><mat-icon>family_restroom</mat-icon><strong>Antécédents médicaux familiaux:</strong> {{
+                patient()?.familialMedicalHistory }}</p>
+              <p><mat-icon>healing</mat-icon><strong>État de santé actuel:</strong> {{
+                patient()?.currentMedicalCondition }}</p>
+              <p><mat-icon>medication</mat-icon><strong>Médicaments actuels:</strong> {{ patient()?.currentMedications
+                }}</p>
+              <p><mat-icon>bug_report</mat-icon><strong>Allergies:</strong> {{ patient()?.allergies }}</p>
+              <p><mat-icon>local_hospital</mat-icon><strong>Chirurgies:</strong> {{ patient()?.surgeries }}</p>
+              <p><mat-icon>vaccines</mat-icon><strong>Vaccins:</strong> {{ patient()?.vaccines }}</p>
+            </mat-card-content>
+          </mat-card>
+          } @else {<div class="medical-history-edit-container">
+            <h2>Modifier le Historique Médical</h2>
+            <div class="medical-history-edit-form">
 
-            <mat-form-field appearance="outline">
-              <mat-label>Antécédents médicaux familiaux</mat-label>
-              <textarea matInput formControlName="familialMedicalHistory"></textarea>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-              <mat-label>État de santé actuel</mat-label>
-              <textarea matInput formControlName="currentMedicalCondition"></textarea>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-              <mat-label>Médicaments actuels</mat-label>
-              <textarea matInput formControlName="currentMedications"></textarea>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-              <mat-label>Allergies</mat-label>
-              <textarea matInput formControlName="allergies"></textarea>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-              <mat-label>Chirurgies</mat-label>
-              <textarea matInput formControlName="surgeries"></textarea>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-              <mat-label>Vaccins</mat-label>
-              <textarea matInput formControlName="vaccines"></textarea>
-            </mat-form-field>
-
-            <button mat-raised-button color="primary" type="submit" [disabled]="!medicalHistoryForm.valid">
-              Enregistrer
-            </button>
-          </form>
+              <form [formGroup]="medicalHistoryForm" (ngSubmit)="saveMedicalHistory()">
+                <div class="form-row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Antécédents médicaux personnels</mat-label>
+                    <textarea matInput formControlName="personalMedicalHistory"></textarea>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Antécédents médicaux familiaux</mat-label>
+                    <textarea matInput formControlName="familialMedicalHistory"></textarea>
+                  </mat-form-field>
+                </div>
+                <div class="form-row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>État de santé actuel</mat-label>
+                    <textarea matInput formControlName="currentMedicalCondition"></textarea>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Médicaments actuels</mat-label>
+                    <textarea matInput formControlName="currentMedications"></textarea>
+                  </mat-form-field>
+                </div>
+                <div class="form-row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Allergies</mat-label>
+                    <textarea matInput formControlName="allergies"></textarea>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Chirurgies</mat-label>
+                    <textarea matInput formControlName="surgeries"></textarea>
+                  </mat-form-field>
+                </div>
+                <div class="form-row">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Vaccins</mat-label>
+                    <textarea matInput formControlName="vaccines"></textarea>
+                  </mat-form-field>
+                </div>
+                <button mat-flat-button color="primary" type="submit" [disabled]="!medicalHistoryForm.valid">
+                  <mat-icon>save</mat-icon>
+                  Enregistrer
+                </button>
+              </form>
+            </div>
+          </div>
           }
         </div>
       </mat-tab>
-      <mat-tab label="Visites">
-        <div class="tab-content">
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon svgIcon="visit_icon"></mat-icon>&nbsp;
+          Visites
+        </ng-template>
+        <div>
           @if (patient()) {
           <app-visits-tab [patientId]="patient()?.id"></app-visits-tab>
           } @else {
@@ -91,8 +151,13 @@
           }
         </div>
       </mat-tab>
-      <mat-tab label="Tests de Laboratoire">
-        <div class="tab-content">
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon svgIcon="lab_tests_icon"></mat-icon>&nbsp;
+          Tests de Laboratoire
+        </ng-template>
+        <div style="height: 100%;">
           @if (patient()) {
           <app-lab-test [patientId]="patient()?.id"></app-lab-test>
           } @else {
@@ -101,8 +166,13 @@
         </div>
       </mat-tab>
 
-      <mat-tab label="Prescriptions">
-        <div class="tab-content">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon svgIcon="prescription_icon"></mat-icon>&nbsp;
+          Prescriptions
+        </ng-template>
+
+        <div>
           @if (patient()) {
           <app-prescriptions-tab [patientId]="patient()?.id"></app-prescriptions-tab>
           } @else {
@@ -110,7 +180,33 @@
           }
         </div>
       </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon svgIcon="certificat_icon"></mat-icon>&nbsp;
+          Certificats
+        </ng-template>
+        <div class="certificats-container">
+          <app-certificat-medical [patient]="patient()!"></app-certificat-medical>
+          <app-certificat-bonne-sante [patient]="patient()!"></app-certificat-bonne-sante>
+        </div>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>send</mat-icon>&nbsp;
+          Lettre d'orientation
+        </ng-template>
+        <div>
+          @if (patient()) {
+            <app-referral-letter [patient]="patient()!"></app-referral-letter>
+          } @else {
+            <p>Chargement de la lettre d'orientation...</p>
+          }
+        </div>
+      </mat-tab>
+
 
     </mat-tab-group>
+
   </div>
 </main>

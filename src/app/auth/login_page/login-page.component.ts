@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -17,24 +18,27 @@ import { Router } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    RouterModule,
   ],
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent {
-  constructor(private router: Router) {}
+  private router = inject(Router);
+  private authService = inject(AuthService);
 
-  username = '';
+  email = '';
   password = '';
 
   login() {
-    if (this.username === 'admin' && this.password === 'admin') {
-
-      console.log(`Logging in with username: ${this.username}`);
-      this.router.navigate(['/patients']);
-
-    } else {
-      console.log('Username and password are required.');
-    }
+    this.authService.login({ email: this.email, password: this.password }).subscribe(
+      () => {
+        this.router.navigate(['/patients']);
+        console.log(this.authService.token);
+      },
+      (error) => {
+        console.error('Login failed', error);
+      }
+    );
   }
 }

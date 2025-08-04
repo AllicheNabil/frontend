@@ -1,0 +1,48 @@
+<div class="scrollable-container">
+  <mat-card>
+    <h2>Lettre d'orientation pour {{ patient.name }}</h2>
+    <mat-card-content>
+      <form [formGroup]="referralForm">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Demande</mat-label>
+          <input matInput formControlName="demande">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Motif de la demande</mat-label>
+          <input matInput formControlName="motifDemande">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Synthèse clinique</mat-label>
+          <textarea matInput formControlName="syntheseClinique" rows="5"></textarea>
+        </mat-form-field>
+
+        <div class="diagnostic-input-group">
+          <mat-form-field appearance="outline" class="diagnostic-input">
+            <mat-label>Diagnostic suspecté</mat-label>
+            <input matInput [formControl]="diagnosticInput">
+          </mat-form-field>
+          <button mat-icon-button color="primary" (click)="addDiagnostic()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+
+        <div class="diagnostics-list">
+          @for (diagnostic of diagnostics; track $index) {
+          <div class="diagnostic-item">
+            <span>{{ diagnostic }}</span>
+            <button mat-icon-button color="warn" (click)="removeDiagnostic($index)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+          }
+        </div>
+
+        <div class="form-actions">
+          <button mat-flat-button color="accent" type="button" (click)="onPrint()">Imprimer</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

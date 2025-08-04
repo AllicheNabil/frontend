@@ -1,10 +1,26 @@
+mat-card {
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow-y: hidden;
+}
+
+mat-card-title {
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.row-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
 form {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
 }
 
 .form-actions {
@@ -12,4 +28,10 @@ form {
   justify-content: flex-end;
   gap: 10px;
   margin-top: 20px;
+}
+
+.mat-flat-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }

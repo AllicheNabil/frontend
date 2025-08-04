@@ -1,21 +1,26 @@
-.medication-group {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  position: relative;
+.date-field {
+  min-width: 225px;
 }
 
-.medication-group h4 {
-  margin-top: 0;
-  margin-bottom: 1rem;
+.medication-group {
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
 }
 
 .form-fields {
   display: flex;
   flex-direction: row;
-  gap: 16px;
-  flex-wrap: wrap; /* Allow fields to wrap to the next line if space is limited */
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  gap: 1px;
 }
 
 .actions {
@@ -25,22 +30,126 @@
   gap: 8px;
 }
 
-.mat-form-field {
-    width: 100%; /* Default for all mat-form-fields */
-    margin-bottom: 10px;
+.add-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-form-field {
+  width: 170px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .medication-name-field {
-  flex-grow: 2; /* Allows it to take more space */
-  min-width: 250px; /* Minimum width for the field */
+  flex-grow: 1;
+  min-width: 200px;
 }
 
 .medication-name-field input {
   text-transform: uppercase;
 }
 
-.remove-button {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  overflow: hidden;
+}
+
+form {
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  flex-direction: column;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  gap: 0px;
+  height: 60vh;
+  overflow: auto;
+}
+
+.medication-list-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 20px;
+  /* Add some space from the form */
+}
+
+.medications-list {
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+h3 {
+  color: #3f51b5;
+  margin-top: 0;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.medications-list mat-list-item {
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+  background-color: #ffc107;
+}
+
+.medications-list mat-list-item:last-child {
+  border-bottom: none;
+}
+
+.medications-list mat-list-item h4 {
+  margin: 0;
+  font-weight: 500;
+  color: #333;
+}
+
+.medications-list mat-list-item p {
+  margin: 0;
+  color: #777;
+  font-size: 0.9em;
+}
+
+.medications-list mat-list-item .medication-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+.medications-list mat-list-item .mat-icon-button mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  overflow: visible;
+}
+
+.medications-list mat-list-item .mat-icon-button:first-of-type mat-icon {
+  /* Edit icon */
+  color: #ffc107;
+  /* Amber for edit */
+}
+
+.medications-list mat-list-item .mat-icon-button:last-of-type mat-icon {
+  /* Delete icon */
+  color: #f44336;
+  /* Red for delete */
+}
+
+.medications-list p {
+  color: #999;
+  text-align: center;
+  margin-top: 15px;
+  font-style: italic;
 }

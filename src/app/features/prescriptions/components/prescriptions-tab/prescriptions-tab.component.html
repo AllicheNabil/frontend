@@ -1,14 +1,32 @@
-<div>
+<div class="prescription-container">
   <ng-container *ngIf="!showAddPrescriptionForm; else addPrescriptionForm">
-    <h2>Prescriptions</h2>
-    <button mat-raised-button color="primary" (click)="toggleAddPrescriptionForm(true)">Ajouter une
-      prescription</button>
+    <div class="header-row">
+      <h2>Prescriptions</h2>
+      <button mat-flat-button (click)="toggleAddPrescriptionForm(true)">
+        <mat-icon>add</mat-icon>
+        Ajouter une
+        prescription</button>
+    </div>
+    <div class="table-container">
 
-    <ul>
-      <li *ngFor="let medication of medications">
-        {{ medication.medicationName }} - {{ medication.medicationDate }}
-      </li>
-    </ul>
+      <table mat-table [dataSource]="(medications$ | async) || []" class="mat-elevation-z8">
+
+        <!-- Medication Name Column -->
+        <ng-container matColumnDef="medicationName">
+          <th mat-header-cell *matHeaderCellDef> Nom du médicament </th>
+          <td mat-cell *matCellDef="let element"> {{element.medicationName}} </td>
+        </ng-container>
+
+        <!-- Medication Date Column -->
+        <ng-container matColumnDef="medicationDate">
+          <th mat-header-cell *matHeaderCellDef> Date du médicament </th>
+          <td mat-cell *matCellDef="let element"> {{element.medicationDate}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['medicationName', 'medicationDate']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['medicationName', 'medicationDate'];"></tr>
+      </table>
+    </div>
   </ng-container>
 
   <ng-template #addPrescriptionForm>

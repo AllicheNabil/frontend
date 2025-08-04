@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
-import { MedicationEntity } from '../MedicationEntity';
+import { Medication } from '../MedicationEntity';
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export abstract class AddMedicationUseCase {
-  abstract execute(medication: MedicationEntity): Observable<MedicationEntity>;
+  abstract execute(medication: Medication): Observable<Medication>;
 }

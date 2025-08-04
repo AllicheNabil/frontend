@@ -1,0 +1,55 @@
+.prescription-container {
+
+    padding: 1rem;
+    height: 60vh;
+    overflow: hidden;
+    border: 5px solid #af3fb5;
+    border-radius: 8px;
+}
+
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.table-container {
+    overflow-y: auto;
+    height: 70%;
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+:host ::ng-deep .mat-elevation-z8 {
+    margin-top: 1rem;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+:host ::ng-deep .mat-table {
+    width: 100%;
+}
+
+:host ::ng-deep .mat-header-cell {
+    background-color: #f5f5f5;
+    color: #333;
+    font-weight: bold;
+}
+
+:host ::ng-deep .mat-cell {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #eee;
+}
+
+/* Styles for add-prescription-form to take full height */
+:host ::ng-deep app-add-prescription-form {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}

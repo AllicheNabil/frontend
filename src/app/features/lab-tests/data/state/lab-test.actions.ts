@@ -8,7 +8,7 @@ export const LabTestActions = createActionGroup({
     'Load Lab Tests Success': props<{ labTests: LabTestEntity[] }>(),
     'Load Lab Tests Failure': props<{ error: any }>(),
     'Add Lab Test': props<{ labTest: LabTestEntity }>(),
-    'Add Lab Test Success': props<{ labTest: LabTestEntity }>(),
+    'Add Lab Test Success': props<{ labTest: LabTestEntity, patientId: number }>(),
     'Add Lab Test Failure': props<{ error: any }>(),
   },
 });

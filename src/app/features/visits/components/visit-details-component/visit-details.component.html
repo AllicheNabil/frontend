@@ -4,18 +4,23 @@
 
   @if (visit) {
   <div class="details-grid">
-    <p><strong>Raison:</strong> {{ visit.reason }}</p>
-    <p><strong>Examen Physique:</strong> {{ visit.physicalExamination }}</p>
-    <p><strong>Poids:</strong> {{ visit.weight }}</p>
-    <p><strong>Percentile Poids:</strong> {{ visit.weightPercentile }}</p>
-    <p><strong>Taille:</strong> {{ visit.height }}</p>
-    <p><strong>Percentile Taille:</strong> {{ visit.heightPercentile }}</p>
-    <p><strong>Périmètre Crânien:</strong> {{ visit.headCirumference }}</p>
-    <p><strong>Percentile Périmètre Crânien:</strong> {{ visit.headCirumferencePercentile }}</p>
-    <p><strong>IMC:</strong> {{ visit.bmi }}</p>
-    <p><strong>Diagnostic:</strong> {{ visit.diagnosis }}</p>
-    <p><strong>Date de Visite:</strong> {{ visit.visitDate }}</p>
-    <p><strong>Heure de Visite:</strong> {{ visit.visitHour }}</p>
+    <p><strong class="blue-text">Raison:</strong> {{ visit.reason }}</p>
+    <p><strong class="blue-text">Examen Physique:</strong> {{ visit.physicalExamination }}</p>
+    <p><strong class="blue-text">Poids:</strong> {{ visit.weight }} Kg</p>
+    <p><strong class="blue-text">Percentile Poids:</strong> {{ visit.weightPercentile }}</p>
+    <p><strong class="blue-text">Z-Score Poids:</strong> {{ visit.weightZScore }}</p>
+    <p><strong class="blue-text">Taille:</strong> {{ visit.height }} cm</p>
+    <p><strong class="blue-text">Percentile Taille:</strong> {{ visit.heightPercentile }}</p>
+    <p><strong class="blue-text">Z-Score Taille:</strong> {{ visit.heightZScore }}</p>
+    <p><strong class="blue-text">Périmètre Crânien:</strong> {{ visit.headCircumference }} cm</p>
+    <p><strong class="blue-text">Percentile Périmètre Crânien:</strong> {{ visit.headCircumferencePercentile }}</p>
+    <p><strong class="blue-text">Z-Score Périmètre Crânien:</strong> {{ visit.headCircumferenceZScore }}</p>
+    <p><strong class="blue-text">IMC:</strong> {{ visit.bmi }}</p>
+    <p><strong class="blue-text">Percentile IMC:</strong> {{ visit.bmiPercentile }}</p>
+    <p><strong class="blue-text">Z-Score IMC:</strong> {{ visit.bmiZScore }}</p>
+    <p><strong class="blue-text">Diagnostic:</strong> {{ visit.diagnosis }}</p>
+    <p><strong class="blue-text">Date de Visite:</strong> {{ visit.visitDate }}</p>
+    <p><strong class="blue-text">Heure de Visite:</strong> {{ visit.visitHour }}</p>
   </div>
   } @else {
   <p>Chargement des détails de la visite...</p>

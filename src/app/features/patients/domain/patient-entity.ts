@@ -2,7 +2,7 @@ export interface PatientEntityProps {
   id: number;
   creationDate: string;
   name: string;
-  sex: string;
+  gender: 'male' | 'female';
   dateOfBirth: string;
   phone: string;
   adresse: string;
@@ -19,7 +19,7 @@ export class Patient {
   id: number;
   creationDate: string;
   name: string;
-  sex: string;
+  gender?: 'male' | 'female';
   dateOfBirth: string;
   phone: string;
   adresse: string;
@@ -35,7 +35,7 @@ export class Patient {
     this.id = props.id;
     this.creationDate = props.creationDate;
     this.name = props.name;
-    this.sex = props.sex;
+    this.gender = props.gender;
     this.dateOfBirth = props.dateOfBirth;
     this.phone = props.phone;
     this.adresse = props.adresse;
@@ -50,10 +50,9 @@ export class Patient {
 
  public toMap(): Record<string, any> {
     return {
-      id: this.id,
       creation_date: this.creationDate,
       name: this.name,
-      sex: this.sex,
+      gender: this.gender,
       date_of_birth: this.dateOfBirth,
       phone: this.phone,
       adresse: this.adresse,
@@ -67,22 +66,22 @@ export class Patient {
     };
   }
 
-  static fromMap(map: Record<string, any>): Patient {
+  static fromMap(map:  any): Patient {
     return new Patient({
-      id: map['id'],
-      creationDate: map['creation_date'],
-      name: map['name'],
-      sex: map['sex'],
-      dateOfBirth: map['date_of_birth'],
-      phone: map['phone'],
-      adresse: map['adresse'],
-      personalMedicalHistory: map['personal_medical_history'] ?? '',
-      familialMedicalHistory: map['familial_medical_history'] ?? '',
-      currentMedicalCondition: map['current_medical_conditions'] ?? '',
-      currentMedications: map['current_medications'] ?? '',
-      allergies: map['allergies'] ?? '',
-      surgeries: map['surgeries'] ?? '',
-      vaccines: map['vaccines'] ?? '',
+      id: map.id,
+      creationDate: map.creationDate,
+      name: map.name,
+      gender: map.gender,
+      dateOfBirth: map.dateOfBirth,
+      phone: map.phone,
+      adresse: map.adresse,
+      personalMedicalHistory: map.personalMedicalHistory ?? '',
+      familialMedicalHistory: map.familialMedicalHistory ?? '',
+      currentMedicalCondition: map.currentMedicalCondition ?? '',
+      currentMedications: map.currentMedications ?? '',
+      allergies: map.allergies ?? '',
+      surgeries: map.surgeries?? '',
+      vaccines: map.vaccines ?? '',
     });
   }
 
@@ -91,7 +90,7 @@ export class Patient {
       this.id === other.id &&
       this.creationDate === other.creationDate &&
       this.name === other.name &&
-      this.sex === other.sex &&
+      this.gender === other.gender &&
       this.dateOfBirth === other.dateOfBirth &&
       this.phone === other.phone &&
       this.adresse === other.adresse &&

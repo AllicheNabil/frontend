@@ -1,3 +1,11 @@
+.visit-container {
+  height: 70vh;
+  overflow: auto;
+  padding: 20px;
+  border: 5px solid #af3fb5;
+  border-radius: 8px;
+}
+
 .tab-header {
   display: flex;
   justify-content: space-between;
@@ -5,23 +13,57 @@
   margin-bottom: 20px;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 70%;
+  overflow: auto;
+  padding: 20px;
 }
 
-li {
-  background-color: #f0f0f0;
-  margin-bottom: 10px;
-  padding: 15px;
-  border-radius: 8px;
+.visit-card {
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 2px solid #b6b9bc;
+  background-color: #e4e8ec;
 }
 
-.visit-item {
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+.visit-card mat-card-title {
+  color: #007bff;
 }
 
-.visit-item:hover {
-  background-color: #e0e0e0;
+.visit-card mat-card-subtitle {
+  color: #555;
+}
+
+.visit-card mat-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.visit-details-column {
+  padding: 0 10px;
+}
+
+.visit-details-column:first-child {
+  border-right: 1px solid #eee;
+}
+
+.visit-details-column p {
+  margin-bottom: 8px;
+}
+
+.visit-details-column p:last-child {
+  margin-bottom: 0;
+}
+
+.mat-flat-button {
+  margin-top: 10px;
+}
+
+.mat-flat-button mat-icon {
+  margin-right: 5px;
 }

@@ -37,10 +37,10 @@ export class LabTestEffects {
       mergeMap(({ labTest }) => {
         console.log('Effect: Adding lab test...', labTest);
         return this.addLabTestUseCase.execute(labTest).pipe(
-          map((newLabTest) => {
-            console.log('Effect: Lab test added successfully', newLabTest);
-            return LabTestActions.addLabTestSuccess({ labTest: newLabTest });
-          }),
+          mergeMap((newLabTest) => [
+            LabTestActions.addLabTestSuccess({ labTest: newLabTest, patientId: labTest.patientId }),
+            LabTestActions.loadLabTests({ patientId: labTest.patientId })
+          ]),
           catchError((error) => {
             console.error('Effect: Failed to add lab test', error);
             return of(LabTestActions.addLabTestFailure({ error }));

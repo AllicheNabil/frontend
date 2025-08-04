@@ -1,13 +1,15 @@
 .visit-details-container {
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #72b878;
   border-radius: 8px;
   background-color: #f9f9f9;
+  overflow: auto;
+  height: 90%;
 }
 
 .details-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: 1fr;
   gap: 15px;
   margin-top: 20px;
 }
@@ -19,7 +21,7 @@
 }
 
 .details-grid strong {
-  display: block;
+  display: inline;
   margin-bottom: 5px;
-  color: #555;
+  color: #007bff;
 }

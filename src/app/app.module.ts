@@ -6,17 +6,17 @@ import { App } from './app';
 
 
 import { MatIconModule } from '@angular/material/icon'; 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './auth/login_page/login-page.component';
 import { PatientsPageComponent } from './features/patients/components/patients-page/patients-page.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { PatientEffects } from './features/patients/data/state/patient.effects';
 import { patientFeature } from './features/patients/data/state/patient.reducer';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 @NgModule({
-  declarations: [
-  
-  ],
+  declarations: [],
   imports: [
     App,
    LoginPageComponent,
@@ -24,10 +24,13 @@ import { patientFeature } from './features/patients/data/state/patient.reducer';
     BrowserModule,
     MatIconModule,
     FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     StoreModule.forRoot({ patient: patientFeature.reducer }),
     EffectsModule.forRoot([PatientEffects])
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: []
 })
 export class AppModule { }

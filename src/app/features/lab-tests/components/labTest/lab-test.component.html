@@ -1,21 +1,33 @@
-<div>
-  @if (!showAddLabTestForm()) {
-  <h2>Lab Tests</h2>
-  <div class="button-container">
-    <button mat-raised-button color="primary" (click)="toggleAddLabTestForm(true)">
-      Ajouter un bilan
-    </button>
+@if (!showAddLabTestForm()) {
+<div class="lab-test-container">
+  <div class="header-row">
+    <h2>Lab Tests</h2>
+    <div class="button-container">
+      <button mat-flat-button (click)="toggleAddLabTestForm(true)">
+        <mat-icon>add</mat-icon>
+        Ajouter un bilan
+      </button>
+    </div>
   </div>
 
-  <ul>
-    @for (test of labTests(); track test.labTestId) {
-    <li> {{ test.labTestName }} - {{ test.labTestDate }}</li>
-
-    }
-
-  </ul>
-  } @else {
-  <app-add-lab-test [patientId]="patientId" (labTestAdded)="onLabTestAdded()" (cancel)="toggleAddLabTestForm(false)">
-  </app-add-lab-test>
-  }
+  <div class="table-container">
+    <table mat-table [dataSource]="labTests()">
+      <!-- Name Column -->
+      <ng-container matColumnDef="labTestName">
+        <th mat-header-cell *matHeaderCellDef> Nom du test </th>
+        <td mat-cell *matCellDef="let element"> {{element.labTestName}} </td>
+      </ng-container>
+      <!-- Date Column -->
+      <ng-container matColumnDef="labTestDate">
+        <th mat-header-cell *matHeaderCellDef> Date du test </th>
+        <td mat-cell *matCellDef="let element"> {{element.labTestDate}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="['labTestName', 'labTestDate']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['labTestName', 'labTestDate'];"></tr>
+    </table>
+  </div>
 </div>
+} @else {
+<app-add-lab-test [patientId]="patientId" (onLabTestAdded)="onLabTestAdded()" (cancel)="toggleAddLabTestForm(false)">
+</app-add-lab-test>
+}

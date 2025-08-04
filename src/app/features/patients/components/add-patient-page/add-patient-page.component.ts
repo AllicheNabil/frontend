@@ -33,7 +33,7 @@ export class AddPatientPageComponent implements OnInit {
 
   patientForm = new FormGroup({
     name: new FormControl('', Validators.required),
-    sex: new FormControl('', Validators.required),
+    gender: new FormControl<'male' | 'female'>('male', Validators.required),
     dateOfBirth: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
     adresse: new FormControl('', Validators.required)
@@ -55,7 +55,7 @@ export class AddPatientPageComponent implements OnInit {
         id: 0, // backend generates the real ID
         creationDate: new Date().toISOString().split('T')[0], // today’s date in "YYYY-MM-DD"
         name: formValues.name!,
-        sex: formValues.sex!,
+        gender: formValues.gender!,
         dateOfBirth: formValues.dateOfBirth!,
         phone: formValues.phone!,
         adresse: formValues.adresse!,

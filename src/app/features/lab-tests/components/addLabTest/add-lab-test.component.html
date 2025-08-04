@@ -1,15 +1,42 @@
-<div>
-  <h2>Add Lab Test</h2>
+<div class="add-lab-test-container">
+  <h2>Ajouter un bilan</h2>
   <form [formGroup]="labTestForm" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="outline">
-      <mat-label>Nom du bilan</mat-label>
-      <input matInput formControlName="labTestName">
-    </mat-form-field>
+    <div [formGroup]="currentLabTestForm" class="lab-test-input-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Nom du bilan</mat-label>
+        <input matInput formControlName="labTestName" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredLabTests | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button class="add-button" type="button" mat-icon-button (click)="addLabTestToAddedList()">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+
+    </div>
+    <h3>Bilans ajoutés</h3>
 
 
+    <div class="added-lab-tests-list">
+      <mat-list>
+        <mat-list-item *ngFor="let labTest of addedLabTests; let i = index">
+          <div matListItemTitle>{{i + 1}}. {{ labTest.labTestName }}</div>
+          <div matListItemMeta>
+            <button class="remove-button" type="button" mat-icon-button (click)="removeLabTest(i);">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+        <p *ngIf="addedLabTests.length === 0">Aucun bilan ajouté pour le moment.</p>
+      </mat-list>
+    </div>
 
     <div class="actions">
-      <button mat-raised-button color="primary" type="submit" [disabled]="!labTestForm.valid">Enregistrer</button>
+      <button mat-raised-button color="primary" type="submit"
+        [disabled]="addedLabTests.length === 0">Enregistrer</button>
+      <button mat-button type="button" (click)="onPrint()" [disabled]="addedLabTests.length === 0">Imprimer</button>
       <button mat-button (click)="onCancel()">Annuler</button>
     </div>
   </form>

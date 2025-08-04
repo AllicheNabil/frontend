@@ -20,19 +20,18 @@ export class LabTestEntity {
 
   public static fromMap(map: any): LabTestEntity {
     return new LabTestEntity({
-      labTestId: map.lab_test_id,
-      labTestName: map.lab_test_name,
-      labTestDate: map.lab_test_date,
-      patientId: map.patient_id,
+      labTestId: map.labTestId,
+      labTestName: map.labTestName,
+      labTestDate: map.labTestDate,
+      patientId: map.patientId,
     });
   }
 
   public toMap(): any {
     return {
-      lab_test_id: this.labTestId,
-      lab_test_name: this.labTestName,
-      lab_test_date: this.labTestDate,
-      patient_id: this.patientId,
+      labTestName: this.labTestName,
+      labTestDate: this.labTestDate,
+      patientId: this.patientId,
     };
   }
 }

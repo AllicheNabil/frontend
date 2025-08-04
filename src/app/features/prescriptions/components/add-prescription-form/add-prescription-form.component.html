@@ -1,77 +1,91 @@
+@if (isLoadingDrugs) {
+<div class="spinner-container">
+  <mat-spinner></mat-spinner>
+</div>
+} @else {
 <form [formGroup]="prescriptionForm" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="outline">
-    <mat-label>Date de prescription</mat-label>
-    <input matInput type="date" formControlName="medicationDate">
-  </mat-form-field>
-
-  <div formArrayName="medications">
-    <div *ngFor="let medication of medications.controls; let i=index" [formGroupName]="i" class="medication-group">
-      <h4>Médicament {{i + 1}}</h4>
-
-
-
-      <div class="form-fields">
-
-        <mat-form-field appearance="outline" class="medication-name-field">
-          <mat-label>Nom du médicament</mat-label>
-          <input matInput formControlName="medicationName" [matAutocomplete]="auto">
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let drug of filteredDrugs[i] | async" [value]="drug">
-              {{drug}}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
-
-
-
-
-      </div>
-
-      <div class="form-fields">
-
-        <mat-form-field appearance="outline">
-          <mat-label>Quantité</mat-label>
-          <input matInput formControlName="amount">
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Forme galénique</mat-label>
-          <mat-select formControlName="dosageForm">
-            <mat-option *ngFor="let form of dosageForms" [value]="form">
-              {{form}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-      <div class="form-fields">
-        <mat-form-field appearance="outline">
-          <mat-label>Nombre de fois par jour</mat-label>
-          <input matInput formControlName="timesPerDay">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Durée du traitement</mat-label>
-          <input matInput formControlName="medicationDuration">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Unité</mat-label>
-          <mat-select formControlName="medicationDurationUnit">
-            <mat-option *ngFor="let unit of durationUnits" [value]="unit">
-              {{unit}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <button mat-icon-button (click)="removeMedication(i)" *ngIf="medications.length > 1">
-          <mat-icon>remove_circle</mat-icon>
-        </button>
-      </div>
+  <div [formGroup]="medicationForm" class="medication-group">
+    <div class="add-button-container">
+      <h4>Ajouter un médicament</h4>
+      <button class="add-button" mat-flat-button color="primary" type="button" (click)="addMedicationToList()">
+        <mat-icon>{{ editingMedicationIndex !== null ? 'save' : 'add' }}</mat-icon>
+        {{ editingMedicationIndex !== null ? 'Modifier' : 'Ajouter' }}
+      </button>
+    </div>
+    <div class="form-fields">
+      <mat-form-field appearance="outline" class="medication-name-field">
+        <mat-label>Nom du médicament</mat-label>
+        <input matInput formControlName="medicationName" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let drug of filteredDrugs | async" [value]="drug">
+            {{drug}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="date-field">
+        <mat-label>Date de prescription</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="medicationDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="form-fields">
+      <mat-form-field appearance="outline">
+        <mat-label>Quantité</mat-label>
+        <input matInput formControlName="amount" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Forme galénique</mat-label>
+        <mat-select formControlName="dosageForm">
+          <mat-option *ngFor="let form of medicationForms" [value]="form">
+            {{form}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre de fois par jour</mat-label>
+        <input matInput formControlName="timesPerDay" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Durée du traitement</mat-label>
+        <input matInput formControlName="medicationDuration" required>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Unité</mat-label>
+        <mat-select formControlName="medicationDurationUnit">
+          <mat-option *ngFor="let unit of durationUnits" [value]="unit">
+            {{unit}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
   </div>
+  <mat-divider></mat-divider>
+  <div class="medication-list-container">
+    <h3>Médicaments ajoutés</h3>
+    <mat-list class="medications-list">
+      <mat-list-item *ngFor="let med of addedMedications; let i = index">
+        <div matListItemTitle>{{i+1}}.{{ med.medicationName }} - {{ med.amount }} {{ med.dosageForm }} {{
+          med.timesPerDay }} fois/jour pendant {{ med.medicationDuration }}</div>
 
+        <div matListItemMeta class="medication-actions">
+          <button class="edit-button" mat-icon-button type="button" (click)="editMedication(i)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button class="remove-button" mat-icon-button type="button" (click)="deleteMedicationFromList(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-list-item>
+      <p *ngIf="addedMedications.length === 0">Aucun médicament ajouté pour le moment.</p>
+    </mat-list>
+  </div>
   <div class="actions">
-    <button mat-raised-button color="primary" type="button" (click)="addMedication()">Ajouter un médicament</button>
-    <button mat-raised-button color="primary" type="submit" [disabled]="!prescriptionForm.valid">Enregistrer</button>
-    <button mat-raised-button color="accent" type="button" (click)="printPrescription()">Imprimer</button>
+    <button mat-raised-button color="primary" type="submit"
+      [disabled]="!prescriptionForm.valid || addedMedications.length === 0">Enregistrer</button>
+    <button mat-raised-button color="accent" type="button" (click)="printPrescription()"
+      [disabled]="addedMedications.length === 0">Imprimer</button>
     <button mat-button (click)="onCancel()">Annuler</button>
   </div>
 </form>
+}

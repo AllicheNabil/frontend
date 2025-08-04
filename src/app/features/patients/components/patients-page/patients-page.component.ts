@@ -47,7 +47,7 @@ export class PatientsPageComponent implements OnInit {
     ]).pipe(
       map(([patients, searchTerm]) =>
         patients.filter(patient =>
-          patient.name.toLowerCase().includes((searchTerm || '').toLowerCase())
+          patient.name?.toLowerCase().includes((searchTerm || '').toLowerCase())
         )
       )
     ),

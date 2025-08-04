@@ -1,5 +1,5 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { PatientVisitEntity } from '../../domain/patient-visit-entity';
+import { PatientVisitEntity } from '@app/features/visits/domain/patient-visit-entity';
 import { VisitActions } from './visit.actions';
 import { EntityState, createEntityAdapter } from '@ngrx/entity';
 
@@ -32,7 +32,4 @@ export const visitFeature = createFeature({
     ),
     on(VisitActions.addVisitFailure, (state, { error }) => ({ ...state, loading: false, error }))
   ),
-  extraSelectors: ({ selectVisitState }) => ({
-    ...visitAdapter.getSelectors(selectVisitState),
-  }),
 });

@@ -12,14 +12,14 @@ export class LabTestService extends LabTestRepository {
   
 
   getLabTests(patientId: number): Observable<LabTestEntity[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/${patientId}/labtests`).pipe(
+    return this.http.get<any[]>(`${this.baseUrl}/patient/${patientId}/labtests`).pipe(
       map((data) => data.map((item) => LabTestEntity.fromMap(item)))
     );
   }
 
   addLabTest(labTest: LabTestEntity): Observable<LabTestEntity> {
-    console.log('Adding lab test:', labTest.patientId); 
-    return this.http.post<any>(`${this.baseUrl}/${labTest.patientId}/labtests`, labTest.toMap()).pipe(
+    console.log('Service : Adding lab test:', labTest.patientId); 
+    return this.http.post<any>(`${this.baseUrl}/patient/${labTest.patientId}/labtests`, labTest.toMap()).pipe(
       map((data) => LabTestEntity.fromMap(data))
     );
   }

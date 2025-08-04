@@ -1,4 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+.mat-tab-label-active {
+  background-color: #007bff !important;
+  color: white !important;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+.patient-tabs .mat-tab-label {
+  /* Style for all tab labels (inactive and active) */
+  min-width: 150px;
+  opacity: 0.8;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  color: blueviolet;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #007bff;
+
+  margin-bottom: 16px;
+  font-family: 'Roboto', sans-serif;
+}

@@ -1,0 +1,2 @@
+export const medicationForms : string[] = ['Comprimé', 'Crème', 'Gélule', 'Gouttes', 'Injection', 'Poudre', 'Sirop', 'Suppositoire'];
+export const durationUnits : string[] = ['jours', 'mois', 'boîtes'];

@@ -1,10 +1,11 @@
 <div class="prescription-container">
   <header>
     <div class="doctor-info">
-      <h2>Dr. [Nom du Docteur]</h2>
-      <p>[Spécialité]</p>
-      <p>[Adresse du Cabinet]</p>
-      <p>[Téléphone]</p>
+      <h2>Dr. {{ user?.name }}</h2>
+      <p>{{ user?.specialty }}</p>
+      <p>{{ user?.address }}</p>
+      <p>{{ user?.phoneNumber }}</p>
+      <p>Numéro d'ordre: {{ user?.orderNumber }}</p>
     </div>
     <div class="prescription-date">
       <p>Date: {{ prescriptionDate | date: 'dd/MM/yyyy' }}</p>
