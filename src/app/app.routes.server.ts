@@ -12,5 +12,13 @@ export const serverRoutes: ServerRoute[] = [
       const patients = await fetch('http://localhost:3000/api/patients').then(res => res.json());
       return patients.map((patient: any) => ({ id: patient.id }));
     }
+  },
+  {
+    path: 'print-prescription/:id',
+    renderMode: RenderMode.Prerender,
+    getPrerenderParams: async () => {
+      // TODO: Replace this with actual prescription IDs
+      return Promise.resolve([{ id: '' }]);
+    }
   }
 ];
