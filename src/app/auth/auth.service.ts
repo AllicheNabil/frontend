@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { jwtDecode } from 'jwt-decode';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from '@env/environment.prod';
 
 @Injectable({
   providedIn: 'root',

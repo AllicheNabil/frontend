@@ -1,0 +1,124 @@
+{
+  "Infectieux": [
+    "Pneumonie",
+    "Bronchite aiguë",
+    "Grippe",
+    "Angine streptococcique",
+    "Otite moyenne aiguë",
+    "Infection urinaire",
+    "Gastro-entérite aiguë",
+    "Cellulite",
+    "Septicémie",
+    "Méningite",
+    "Endocardite infectieuse"
+  ],
+  "Cardiovasculaire": [
+    "Hypertension artérielle",
+    "Insuffisance cardiaque",
+    "Infarctus du myocarde",
+    "Angor",
+    "Arythmie cardiaque (fibrillation auriculaire, extrasystoles)",
+    "Maladie coronarienne",
+    "Thrombose veineuse profonde",
+    "Embolie pulmonaire",
+    "Accident vasculaire cérébral (AVC)",
+    "Artériopathie oblitérante des membres inférieurs"
+  ],
+  "Respiratoire": [
+    "Asthme",
+    "Bronchopneumopathie chronique obstructive (BPCO)",
+    "Pleurésie",
+    "Pneumothorax",
+    "Apnée du sommeil",
+    "Cancer du poumon"
+  ],
+  "Digestif": [
+    "Reflux gastro-œsophagien (RGO)",
+    "Ulcère gastro-duodénal",
+    "Maladie de Crohn",
+    "Rectocolite hémorragique",
+    "Syndrome de l'intestin irritable",
+    "Appendicite",
+    "Cholécystite",
+    "Pancréatite",
+    "Hépatite",
+    "Cirrhose",
+    "Diverticulite",
+    "Cancer colorectal"
+  ],
+  "Neurologique": [
+    "Migraine",
+    "Épilepsie",
+    "Maladie de Parkinson",
+    "Sclérose en plaques",
+    "Démence (Alzheimer, vasculaire)",
+    "Neuropathie périphérique",
+    "Hernie discale",
+    "Sciatique",
+    "Syndrome du canal carpien"
+  ],
+  "Endocrinien": [
+    "Diabète de type 1",
+    "Diabète de type 2",
+    "Hypothyroïdie",
+    "Hyperthyroïdie",
+    "Insuffisance surrénale"
+  ],
+  "Rhumatologique": [
+    "Arthrose",
+    "Polyarthrite rhumatoïde",
+    "Spondylarthrite ankylosante",
+    "Goutte",
+    "Lupus érythémateux disséminé",
+    "Fibromyalgie"
+  ],
+  "Urologique": [
+    "Hypertrophie bénigne de la prostate (HBP)",
+    "Calculs rénaux (lithiase urinaire)",
+    "Insuffisance rénale chronique"
+  ],
+  "Psychiatrique": [
+    "Dépression",
+    "Trouble anxieux généralisé",
+    "Trouble bipolaire",
+    "Schizophrénie"
+  ],
+  "Pédiatrie": [
+    "Bronchiolite",
+    "Rhinopharyngite",
+    "Otite moyenne aiguë de l'enfant",
+    "Varicelle",
+    "Rougeole",
+    "Oreillons",
+    "Rubéole",
+    "Scarlatine",
+    "Coqueluche",
+    "Gastro-entérite virale de l'enfant",
+    "Reflux gastro-œsophagien du nourrisson",
+    "Asthme du nourrisson/enfant",
+    "Dermatite atopique",
+    "Impétigo",
+    "Pied-main-bouche",
+    "Maladie de Kawasaki",
+    "Purpura rhumatoïde (Schönlein-Henoch)",
+    "Diabète de type 1 de l'enfant",
+    "Retard de développement psychomoteur",
+    "Trouble du spectre autistique",
+    "Trouble du déficit de l'attention/hyperactivité (TDAH)",
+    "Crise convulsive fébrile",
+    "Épilepsie de l'enfant",
+    "Méningite bactérienne/virale de l'enfant",
+    "Syndrome néphrotique de l'enfant",
+    "Glomérulonéphrite aiguë",
+    "Leucémie aiguë lymphoblastique (LAL)",
+    "Tumeurs cérébrales de l'enfant"
+  ],
+  "Autres": [
+    "Anémie",
+    "Obésité",
+    "Ostéoporose",
+    "Allergie",
+    "Cancer (spécifier le type)",
+    "Maladie auto-immune (spécifier le type)"
+  ]
+}

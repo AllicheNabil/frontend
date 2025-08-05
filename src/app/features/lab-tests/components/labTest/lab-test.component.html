@@ -11,20 +11,26 @@
   </div>
 
   <div class="table-container">
-    <table mat-table [dataSource]="labTests()">
-      <!-- Name Column -->
-      <ng-container matColumnDef="labTestName">
-        <th mat-header-cell *matHeaderCellDef> Nom du test </th>
-        <td mat-cell *matCellDef="let element"> {{element.labTestName}} </td>
-      </ng-container>
-      <!-- Date Column -->
-      <ng-container matColumnDef="labTestDate">
-        <th mat-header-cell *matHeaderCellDef> Date du test </th>
-        <td mat-cell *matCellDef="let element"> {{element.labTestDate}} </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="['labTestName', 'labTestDate']"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['labTestName', 'labTestDate'];"></tr>
-    </table>
+    @if (isLoading()) {
+      <div style="display: flex; justify-content: center; align-items: center; height: 200px;">
+        <mat-spinner></mat-spinner>
+      </div>
+    } @else {
+      <table mat-table [dataSource]="labTests()">
+        <!-- Name Column -->
+        <ng-container matColumnDef="labTestName">
+          <th mat-header-cell *matHeaderCellDef> Nom du test </th>
+          <td mat-cell *matCellDef="let element"> {{element.labTestName}} </td>
+        </ng-container>
+        <!-- Date Column -->
+        <ng-container matColumnDef="labTestDate">
+          <th mat-header-cell *matHeaderCellDef> Date du test </th>
+          <td mat-cell *matCellDef="let element"> {{element.labTestDate}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="['labTestName', 'labTestDate']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['labTestName', 'labTestDate'];"></tr>
+      </table>
+    }
   </div>
 </div>
 } @else {

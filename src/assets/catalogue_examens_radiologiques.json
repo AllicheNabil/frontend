@@ -1,0 +1,100 @@
+{
+  "Echographie-Doppler": [
+    "Echographie abdominale",
+    "Echographie pelvienne",
+    "Echographie rénale et des voies urinaires",
+    "Echographie prostatique et vésiculaire",
+    "Echographie scrotale et testiculaire avec Doppler",
+    "Echographie thyroïdienne et des glandes salivaires",
+    "Echographie cervicale",
+    "Echographie mammaire",
+    "Echographie des parties molles",
+    "Echographie ostéo-articulaire",
+    "Echographie-Doppler des troncs supra-aortiques (TSA)",
+    "Echographie-Doppler artériel des membres inférieurs/supérieurs",
+    "Echographie-Doppler veineux des membres inférieurs/supérieurs",
+    "Echographie-Doppler transcrânien",
+    "Echographie cardiaque transthoracique (ETT)"
+  ],
+  "Tomodensitométrie (TDM)": [
+    "TDM cérébrale",
+    "Angio-TDM des vaisseaux cérébraux et cervicaux",
+    "TDM des sinus de la face et du massif facial",
+    "TDM des rochers et de l'oreille moyenne",
+    "TDM thoracique",
+    "Angio-TDM pulmonaire",
+    "TDM abdomino-pelvienne",
+    "Uro-TDM",
+    "Entéro-TDM ou Colo-TDM",
+    "TDM du rachis",
+    "Arthro-TDM",
+    "TDM ostéo-articulaire"
+  ],
+  "Imagerie par Résonance Magnétique (IRM)": [
+    "IRM cérébrale / encéphalique",
+    "Angio-IRM artérielle et veineuse intracrânienne",
+    "IRM de l'hypophyse",
+    "IRM des conduits auditifs internes (CAI)",
+    "IRM médullaire",
+    "IRM du rachis",
+    "IRM du plexus brachial",
+    "IRM ostéo-articulaire",
+    "Arthro-IRM",
+    "IRM abdominale",
+    "Bili-IRM ou Cholangio-IRM",
+    "Entéro-IRM",
+    "IRM hépatique",
+    "IRM pelvienne",
+    "IRM prostatique multiparamétrique",
+    "IRM mammaire",
+    "IRM cardiaque"
+  ],
+  "Radiologie Conventionnelle et Spécialisée": [
+    "Radiographie thoracique",
+    "Radiographie de l'abdomen sans préparation (ASP)",
+    "Radiographie osseuse",
+    "Télécrâne et télérachis",
+    "Mammographie",
+    "Ostéodensitométrie (DMO)",
+    "Hystérosalpingographie (HSG)",
+    "Transit oeso-gastro-duodénal (TOGD)",
+    "Lavement baryté"
+  ],
+  "Explorations Fonctionnelles": [
+    "Electrocardiogramme (ECG)",
+    "Electroencéphalogramme (EEG)",
+    "Electromyogramme (EMG)",
+    "Potentiels Evoqués (PEA, PES, PEM)",
+    "Exploration Fonctionnelle Respiratoire (EFR)",
+    "Gazométrie Artérielle",
+    "Holter ECG (24h, 48h, 7 jours)",
+    "Holter Tensionnel (MAPA)",
+    "Test d'effort (ergométrie)",
+    "Echographie-Doppler cardiaque (ETT, ETO)"
+  ],
+ 
+  "Endoscopies": [
+    "Fibroscopie oeso-gastro-duodénale (FOGD)",
+    "Coloscopie",
+    "Rectosigmoïdoscopie",
+    "Fibroscopie bronchique",
+    "Cystoscopie",
+    "Hystéroscopie"
+  ],
+  "Anatomopathologie et Cytologie": [
+    "Biopsie tissulaire (cutanée, rénale, hépatique, ganglionnaire)",
+    "Ponction-biopsie ostéo-médullaire (PBOM)",
+    "Frottis cervico-utérin (FCU)",
+    "Cytoponction (thyroïde, ganglion)"
+  ],
+  "Autres Examens Spécialisés": [
+    "Ponction lombaire (PL)",
+    "Ponction d'ascite",
+    "Ponction pleurale",
+    "Tests allergologiques (Prick tests, Patch tests)",
+    "Audiométrie",
+    "Bilan ophtalmologique",
+    "Réhydratation",
+    "Hospitalisation"
+  ]
+}

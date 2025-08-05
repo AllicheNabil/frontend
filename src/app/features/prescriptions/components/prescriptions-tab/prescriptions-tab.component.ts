@@ -2,12 +2,12 @@ import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { AddPrescriptionFormComponent } from '../add-prescription-form/add-prescription-form.component';
-import { PrescriptionFacade } from '@app/features/prescriptions/facade/prescription.facade';
 import { Observable } from 'rxjs';
-import { Medication } from '@app/features/prescriptions/domain/MedicationEntity';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from "@angular/material/icon";
+import { Medication } from '../../domain/MedicationEntity';
+import { PrescriptionFacade } from '../../facade/prescription.facade';
 
 @Component({
   selector: 'app-prescriptions-tab',

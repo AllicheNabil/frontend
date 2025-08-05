@@ -3,27 +3,27 @@ import { CommonModule } from '@angular/common';
 import { SidebarComponent } from '../../../../shared/sidebar/sidebar.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { PatientFacade } from '@app/features/patients/facade/patient.facade';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map, switchMap } from 'rxjs/operators';
-import { Patient } from '@app/features/patients/domain/patient-entity';
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
-import { VisitsTabComponent } from '@app/features/visits/components/visits-tab-component/visits-tab.component';
-import { LabTestComponent } from '@app/features/lab-tests/components/labTest/lab-test.component';
-import { PrescriptionsTabComponent } from '@app/features/prescriptions/components/prescriptions-tab/prescriptions-tab.component';
-import { CertificatMedicalComponent } from '@app/features/certificates/certificat-medical/certificat-medical.component';
-import { CertificatBonneSanteComponent } from '@app/features/certificates/certificat-bonne-sante/certificat-bonne-sante.component';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { ReferralLetterComponent } from '@app/features/referral-letter/components/referral-letter-component/referral-letter.component';
-
-
 import { formatAge } from '@app/core/utils/age.utils';
+import { CertificatBonneSanteComponent } from '@app/features/certificates/certificat-bonne-sante/certificat-bonne-sante.component';
+import { CertificatMedicalComponent } from '@app/features/certificates/certificat-medical/certificat-medical.component';
+import { LabTestComponent } from '@app/features/lab-tests/components/labTest/lab-test.component';
+import { PrescriptionsTabComponent } from '@app/features/prescriptions/components/prescriptions-tab/prescriptions-tab.component';
+import { ReferralLetterComponent } from '@app/features/referral-letter/components/referral-letter-component/referral-letter.component';
+import { VisitsTabComponent } from '@app/features/visits/components/visits-tab-component/visits-tab.component';
+import { Patient } from '../../domain/patient-entity';
+import { PatientFacade } from '../../facade/patient.facade';
+
+
 
 @Component({
   selector: 'app-patient-details-page',

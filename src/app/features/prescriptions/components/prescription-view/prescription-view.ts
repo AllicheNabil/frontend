@@ -1,7 +1,7 @@
-import { Patient } from '@app/features/patients/domain/patient-entity';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { calculateAgeInYears } from '@app/core/utils/age.utils';
+import { Patient } from '@app/features/patients/domain/patient-entity';
 import { User } from '@app/features/user/user.model';
 import { UserService } from '@app/features/user/user.service';
 

@@ -9,9 +9,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterLink } from '@angular/router';
-import { PatientFacade } from '@app/features/patients/facade/patient.facade';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { combineLatest, startWith, map } from 'rxjs';
+import { PatientFacade } from '../../facade/patient.facade';
 
 @Component({
   selector: 'app-patients-page',

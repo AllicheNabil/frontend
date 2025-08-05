@@ -1,25 +1,25 @@
-import { Patient } from '@app/features/patients/domain/patient-entity';
 import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { Medication } from '@app/features/prescriptions/domain/MedicationEntity';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClient } from '@angular/common/http';
 import { Observable, startWith, map } from 'rxjs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { medicationForms } from '@app/core/const/strings.const';
-import { PrescriptionFacade } from '@app/features/prescriptions/facade/prescription.facade';
-import { AuthService } from '@app/auth/auth.service';
-import { PatientFacade } from '@app/features/patients/facade/patient.facade';
 import { MatListModule } from '@angular/material/list'; // New
 import { MatDividerModule } from '@angular/material/divider'; // New
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { medicationForms } from '@app/core/const/strings.const';
+import { AuthService } from '@app/auth/auth.service';
+import { Patient } from '@app/features/patients/domain/patient-entity';
+import { PatientFacade } from '@app/features/patients/facade/patient.facade';
+import { Medication } from '../../domain/MedicationEntity';
+import { PrescriptionFacade } from '../../facade/prescription.facade';
 
 @Component({
   selector: 'app-add-prescription-form',

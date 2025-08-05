@@ -1,9 +1,9 @@
 import { Injectable, inject } from '@angular/core';
-import { PrintDocumentUsecase } from '@app/core/domain/usecases/print-document.usecase';
 import { CertificateHtmlGenerator } from '../generators/certificat-html-generator.service';
-import { UserService } from '@app/features/user/user.service';
-import { Patient } from '@app/features/patients/domain/patient-entity';
 import { forkJoin } from 'rxjs';
+import { Patient } from '../../patients/domain/patient-entity';
+import { UserService } from '../../user/user.service';
+import { PrintDocumentUsecase } from '@app/core/domain/usecases/print-document.usecase';
 
 @Injectable({
   providedIn: 'root'

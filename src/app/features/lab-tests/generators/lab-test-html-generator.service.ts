@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { formatShortDate } from '@app/core/utils/date.utils';
-import { Patient } from '@app/features/patients/domain/patient-entity';
-import { User } from '@app/features/user/user.model';
-
+import { formatShortDate } from '@app/core/utils/age.utils';
+import { Patient } from '../../patients/domain/patient-entity';
+import { User } from '../../user/user.model';
 @Injectable({
   providedIn: 'root'
 })

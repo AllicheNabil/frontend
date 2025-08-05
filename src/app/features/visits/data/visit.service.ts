@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { VisitRepository } from '@app/features/visits/domain/visit.repository';
 import { PatientVisitEntity } from '@app/features/visits/domain/patient-visit-entity';
 import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from '@env/environment.prod';
 
 @Injectable({ providedIn: 'root' })
 export class VisitService implements VisitRepository {

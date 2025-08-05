@@ -5,12 +5,22 @@
       <form [formGroup]="referralForm">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Demande</mat-label>
-          <input matInput formControlName="demande">
+          <input matInput formControlName="demande" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredExams | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Motif de la demande</mat-label>
-          <input matInput formControlName="motifDemande">
+          <input matInput formControlName="motifDemande" [matAutocomplete]="autoMotif">
+          <mat-autocomplete #autoMotif="matAutocomplete">
+            <mat-option *ngFor="let option of filteredMotifs | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
@@ -21,7 +31,12 @@
         <div class="diagnostic-input-group">
           <mat-form-field appearance="outline" class="diagnostic-input">
             <mat-label>Diagnostic suspecté</mat-label>
-            <input matInput [formControl]="diagnosticInput">
+            <input matInput [formControl]="diagnosticInput" [matAutocomplete]="autoDiagnostic">
+          <mat-autocomplete #autoDiagnostic="matAutocomplete">
+            <mat-option *ngFor="let option of filteredDiagnostics | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
           </mat-form-field>
           <button mat-icon-button color="primary" (click)="addDiagnostic()">
             <mat-icon>add</mat-icon>

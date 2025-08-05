@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map, tap, throwError } from 'rxjs';
 import { PatientRepository } from '../domain/patient.repository';
 import { Patient } from '../domain/patient-entity';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from '@env/environment.prod';
 
 @Injectable({ providedIn: 'root' })
 export class PatientService extends PatientRepository {

@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { Medication } from '@app/features/prescriptions/domain/MedicationEntity';
+import { Medication } from '../../domain/MedicationEntity';
 
 export const PrescriptionActions = createActionGroup({
   source: 'Prescription',

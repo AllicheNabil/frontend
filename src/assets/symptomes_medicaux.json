@@ -1,0 +1,100 @@
+{
+  "Douleurs": [
+    "Douleur abdominale aiguë",
+    "Douleur abdominale chronique",
+    "Douleur thoracique (angineuse, pleurétique, pariétale)",
+    "Céphalée (migraine, céphalée de tension, algie vasculaire de la face)",
+    "Lombalgie (aiguë, chronique)",
+    "Cervicalgie",
+    "Arthralgie (monoarticulaire, polyarticulaire)",
+    "Myalgie",
+    "Névralgie",
+    "Douleur pelvienne",
+    "Douleur épigastrique",
+    "Douleur irradiante"
+  ],
+  "Fièvre et Syndromes Infectieux": [
+    "Fièvre sans foyer évident",
+    "Fièvre prolongée",
+    "Frissons",
+    "Sueurs nocturnes",
+    "Adénopathie",
+    "Asthénie post-infectieuse"
+  ],
+  "Neurologiques": [
+    "Convulsions fébriles",
+    "Convulsions non fébriles",
+    "Crise d'épilepsie (généralisée, partielle)",
+    "Perte de connaissance (syncope, lipothymie)",
+    "Vertiges (rotatoires, oscillatoires)",
+    "Troubles de l'équilibre",
+    "Paresthésies",
+    "Dysesthésies",
+    "Faiblesse musculaire (parésie, paralysie)",
+    "Troubles de la marche",
+    "Troubles de la vision (diplopie, amaurose, scotome)",
+    "Troubles de la parole (dysarthrie, aphasie)",
+    "Troubles de la déglutition (dysphagie)",
+    "Troubles cognitifs (amnésie, confusion)",
+    "Tremblements",
+    "Mouvements anormaux (chorée, dystonie)",
+    "Syndrome méningé (céphalée, raideur de nuque, photophobie)"
+  ],
+  "Digestifs": [
+    "Nausées",
+    "Vomissements",
+    "Diarrhée (aiguë, chronique)",
+    "Constipation",
+    "Dysphagie",
+    "Odynophagie",
+    "Pyrosis",
+    "Régurgitations",
+    "Ballonnements",
+    "Météorisme",
+    "Hémorragie digestive (hématémèse, méléna, rectorragie)",
+    "Ictère",
+    "Ascite"
+  ],
+  "Respiratoires": [
+    "Toux (sèche, productive, aiguë, chronique)",
+    "Dyspnée (d'effort, de repos, paroxystique nocturne)",
+    "Expectoration (muqueuse, purulente, hémoptoïque)",
+    "Hémoptysie",
+    "Sifflements (wheezing)",
+    "Douleur pleurétique"
+  ],
+  "Cardio-vasculaires": [
+    "Palpitations",
+    "Dyspnée d'effort",
+    "Douleur thoracique (angineuse)",
+    "Oedèmes des membres inférieurs",
+    "Cyanose",
+    "Claudication intermittente"
+  ],
+  "Uro-néphrologiques": [
+    "Dysurie",
+    "Pollakiurie",
+    "Brûlures mictionnelles",
+    "Hématurie",
+    "Rétention aiguë d'urine",
+    "Incontinence urinaire",
+    "Lithiase urinaire (colique néphrétique)"
+  ],
+  "Dermatologiques": [
+    "Éruption cutanée (macule, papule, vésicule, bulle)",
+    "Prurit",
+    "Urticaire",
+    "Erythème",
+    "Purpura",
+    "Pâleur",
+    "Cyanose"
+  ],
+  "Généraux": [
+    "Asthénie",
+    "Anorexie",
+    "Perte de poids inexpliquée",
+    "Prise de poids inexpliquée",
+    "Malaise général",
+    "Fatigue chronique"
+  ]
+}

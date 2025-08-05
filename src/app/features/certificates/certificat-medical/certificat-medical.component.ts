@@ -1,5 +1,4 @@
 import { Component, Input, inject, OnInit } from '@angular/core';
-import { Patient } from '@app/features/patients/domain/patient-entity';
 import { CertificateFacade } from '../facade/certificate.facade';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -10,6 +9,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { Patient } from '../../patients/domain/patient-entity';
 
 @Component({
   selector: 'app-certificat-medical',

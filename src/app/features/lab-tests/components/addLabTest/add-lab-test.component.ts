@@ -5,16 +5,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
-import { LabTestFacade } from '@app/features/lab-tests/facade/lab-test.facade';
-import { LabTestEntity } from '@app/features/lab-tests/domain/lab-test.entity';
-import { AuthService } from '@app/auth/auth.service';
+
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatListModule } from '@angular/material/list';
-import { PatientFacade } from '@app/features/patients/facade/patient.facade';
+import { AuthService } from '@app/auth/auth.service';
 import { Patient } from '@app/features/patients/domain/patient-entity';
+import { PatientFacade } from '@app/features/patients/facade/patient.facade';
+import { LabTestEntity } from '../../domain/lab-test.entity';
+import { LabTestFacade } from '../../facade/lab-test.facade';
 
 @Component({
   selector: 'app-add-lab-test',

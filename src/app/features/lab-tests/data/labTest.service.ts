@@ -2,8 +2,8 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { LabTestEntity } from '../domain/lab-test.entity';
-import { LabTestRepository } from '@app/features/lab-tests/domain/labTest.repository';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from '@env/environment.prod';
+import { LabTestRepository } from '../domain/labTest.repository';
 
 @Injectable({ providedIn: 'root' })
 export class LabTestService extends LabTestRepository {

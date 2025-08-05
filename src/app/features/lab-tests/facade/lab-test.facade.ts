@@ -5,9 +5,9 @@ import { LabTestEntity } from '../domain/lab-test.entity';
 import { LabTestActions } from '../data/state/lab-test.actions';
 import { selectAllSortedByDate, selectLoading, selectError } from '../data/state/lab-test.selectors';
 import { LabTestHtmlGenerator } from '../generators/lab-test-html-generator.service';
-import { UserService } from '@app/features/user/user.service';
-import { Patient } from '@app/features/patients/domain/patient-entity';
 import { forkJoin } from 'rxjs';
+import { Patient } from '../../patients/domain/patient-entity';
+import { UserService } from '../../user/user.service';
 
 @Injectable({
   providedIn: 'root'

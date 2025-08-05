@@ -7,9 +7,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Patient } from '@app/features/patients/domain/patient-entity';
-import { PatientFacade } from '@app/features/patients/facade/patient.facade';
 import { MatIconModule } from '@angular/material/icon';
+import { Patient } from '../../domain/patient-entity';
+import { PatientFacade } from '../../facade/patient.facade';
 
 @Component({
   selector: 'app-add-patient-page',

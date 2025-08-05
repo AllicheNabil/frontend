@@ -3,8 +3,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { PrescriptionActions } from './prescription.actions';
-import { GetMedicationsUseCase } from '@app/features/prescriptions/domain/usecases/GetMedicationsUseCase';
-import { AddMedicationUseCase } from '@app/features/prescriptions/domain/usecases/AddMedicationUseCase';
+import { AddMedicationUseCase } from '../../domain/usecases/AddMedicationUseCase';
+import { GetMedicationsUseCase } from '../../domain/usecases/GetMedicationsUseCase';
 
 @Injectable()
 export class PrescriptionEffects {
