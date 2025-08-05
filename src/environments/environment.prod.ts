@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:3001'
+  apiUrl: 'https://nest-backend-bsrk.onrender.com'
 };
 
 
