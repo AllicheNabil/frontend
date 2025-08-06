@@ -1,0 +1,112 @@
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); /* Modern gradient background */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+mat-card {
+    width: 100%;
+    max-width: 450px; /* Slightly wider card */
+    padding: 30px; /* More internal padding */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+    text-align: center;
+    background-color: #ffffff; /* White background for the card */
+}
+
+.logo-container {
+    margin-bottom: 20px; /* Space below the logo */
+    display: flex; /* Use flexbox to center the image */
+    justify-content: center; /* Center horizontally */
+}
+
+.logo {
+    width: 80px; /* Adjust size as needed */
+    height: 80px;
+    object-fit: contain;
+}
+
+mat-card-header {
+    justify-content: center; /* Center the header content */
+    margin-bottom: 20px;
+}
+
+mat-card-title {
+    font-size: 2.2em; /* Larger title */
+    font-weight: 600; /* Bolder title */
+    color: #333;
+    margin-bottom: 10px;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-bottom: 20px; /* More space between fields */
+}
+
+mat-form-field .mat-form-field-wrapper {
+    padding-bottom: 0; /* Remove extra padding at the bottom of form field */
+}
+
+mat-form-field .mat-form-field-infix {
+    padding: 12px 0; /* Adjust input padding */
+}
+
+mat-form-field .mat-form-field-label {
+    color: #555; /* Darker label color */
+}
+
+mat-form-field.mat-focused .mat-form-field-label {
+    color: #2575fc; /* Focus color */
+}
+
+mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: #2575fc; /* Focus ripple color */
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px 0; /* Larger button */
+    font-size: 1.1em;
+    font-weight: 600;
+    background-color: #2575fc; /* Primary color */
+    color: white;
+    border-radius: 8px; /* Rounded button */
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+    background-color: #1a5bbd; /* Darker on hover */
+}
+
+.login-link-container {
+    margin-top: 25px; /* Space above the link */
+    font-size: 0.95em;
+}
+
+.login-link {
+    color: #2575fc; /* Link color */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.login-link:hover {
+    color: #1a5bbd;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    mat-card {
+        margin: 0 15px;
+    }
+}

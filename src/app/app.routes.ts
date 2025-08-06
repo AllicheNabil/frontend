@@ -1,6 +1,6 @@
 import { PrescriptionViewComponent } from './features/prescriptions/components/prescription-view/prescription-view';
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { HomePageComponent } from './home/home-page.component'; // Updated import
 import { LoginPageComponent } from './auth/login_page/login-page.component';
 import { RegisterPageComponent } from './auth/register-page/register-page.component';
 import { PatientsPageComponent } from './features/patients/components/patients-page/patients-page.component';
@@ -8,7 +8,7 @@ import { authGuard } from './auth/auth.guard';
 import { UserComponent } from './features/user/user';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomePageComponent }, // Set HomePageComponent as default
   { path: 'patients', component: PatientsPageComponent, canActivate: [authGuard] },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
@@ -59,4 +59,3 @@ export const routes: Routes = [
   { path: 'print-prescription/:id', component: PrescriptionViewComponent },
   { path: 'profile', component: UserComponent, canActivate: [authGuard] },
 ];
-

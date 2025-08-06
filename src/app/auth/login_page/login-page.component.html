@@ -1,23 +1,26 @@
 <div class="login-container">
   <mat-card>
+    <div class="logo-container">
+      <img src="assets/icons/app_logo.jpg" alt="App Logo" class="logo">
+    </div>
     <mat-card-header>
-      <mat-card-title>Login</mat-card-title>
+      <mat-card-title>Connexion</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <form (ngSubmit)="login()">
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline"> <!-- Changed to outline appearance -->
           <mat-label>Email</mat-label>
           <input matInput [(ngModel)]="email" name="email" required>
         </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Password</mat-label>
+        <mat-form-field appearance="outline"> <!-- Changed to outline appearance -->
+          <mat-label>Mot de passe</mat-label>
           <input matInput type="password" [(ngModel)]="password" name="password" required>
         </mat-form-field>
-        <button mat-raised-button color="primary" type="submit">Login</button>
+        <button mat-raised-button color="primary" type="submit">Se connecter</button>
       </form>
     </mat-card-content>
-    <mat-card-actions>
-      <a routerLink="/register">Créer un compte</a>
+    <mat-card-actions class="register-link-container"> <!-- Added class for styling -->
+      <a routerLink="/register" class="register-link">Créer un compte</a>
     </mat-card-actions>
   </mat-card>
 </div>

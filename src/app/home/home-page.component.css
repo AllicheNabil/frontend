@@ -1,0 +1,166 @@
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  /* Modern gradient background */
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  /* Prevent scrollbars from animation */
+}
+
+.home-card {
+  width: 100%;
+  max-width: 650px;
+  /* Slightly wider card */
+  padding: 50px;
+  /* More internal padding */
+  border-radius: 20px;
+  /* More rounded corners */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  /* Deeper shadow */
+  text-align: center;
+  background-color: #ffffff;
+  /* White background for the card */
+  opacity: 0;
+  /* Start hidden for animation */
+  transform: translateY(20px);
+  /* Start slightly below for animation */
+  animation: fadeInSlideUp 0.8s ease-out forwards;
+  /* Animation */
+}
+
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo-container {
+  margin-bottom: 25px;
+  /* Space below the logo */
+  display: flex;
+  /* Use flexbox to center the image */
+  justify-content: center;
+  /* Center horizontally */
+}
+
+.app-logo {
+  width: 100px;
+  /* Adjust size as needed */
+  height: 100px;
+  object-fit: contain;
+  border-radius: 50%;
+  /* Make it circular if it's a square image */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.home-card mat-card-title {
+  font-size: 2.8em;
+  /* Larger title */
+  font-weight: 700;
+  color: #2c3e50;
+  /* Darker, more professional color */
+  margin-bottom: 25px;
+  line-height: 1.2;
+}
+
+.home-card mat-card-content p {
+  font-size: 1.2em;
+  /* Slightly larger text */
+  line-height: 1.8;
+  color: #34495e;
+  /* Darker text color */
+  margin-bottom: 20px;
+}
+
+.home-actions {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.home-actions button {
+  padding: 15px 35px;
+  font-size: 1.2em;
+  font-weight: 600;
+  border-radius: 30px;
+  /* Pill-shaped buttons */
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  /* Uppercase text */
+  letter-spacing: 0.5px;
+}
+
+.home-actions button[color="primary"] {
+  background-color: #2575fc;
+  color: white;
+  box-shadow: 0 4px 15px rgba(37, 117, 252, 0.4);
+}
+
+.home-actions button[color="primary"]:hover {
+  background-color: #1a5bbd;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(37, 117, 252, 0.6);
+}
+
+.home-actions button[color="accent"] {
+  border: 2px solid #2575fc;
+  color: #2575fc;
+  background-color: transparent;
+}
+
+.home-actions button[color="accent"]:hover {
+  background-color: #e0eaff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .home-card {
+    padding: 30px;
+  }
+
+  .home-card mat-card-title {
+    font-size: 2.2em;
+  }
+
+  .home-card mat-card-content p {
+    font-size: 1em;
+  }
+
+  .home-actions {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .home-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-card {
+    margin: 0 15px;
+    padding: 25px;
+  }
+
+  .home-card mat-card-title {
+    font-size: 1.8em;
+  }
+
+  .app-logo {
+    width: 80px;
+    height: 80px;
+  }
+}

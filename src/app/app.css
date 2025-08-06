@@ -10,6 +10,15 @@ main {
   /* Allows the main content to grow and fill available space */
   padding: 20px;
   /* Add some padding */
+  height: 100vh;
   overflow-y: auto;
+
   /* Add scroll for long content */
+}
+
+.full-width-main {
+  margin-left: 0 !important;
+  /* Ensure it takes full width */
+  width: 100%;
+  /* Ensure it takes full width */
 }
