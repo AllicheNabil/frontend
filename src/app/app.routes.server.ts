@@ -17,9 +17,9 @@ export const serverRoutes: ServerRoute[] = [
     path: 'print-prescription/:id',
     renderMode: RenderMode.Prerender,
     getPrerenderParams: async (): Promise<Record<string, string>[]> => {
-      // TODO: Replace this with actual prescription IDs
       // This is a placeholder to allow the build to succeed.
-      return [{ id: 'placeholder-id' }];
+      // You should replace this with actual logic to fetch valid prescription IDs.
+      return [];
     }
   }
 ];
